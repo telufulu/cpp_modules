@@ -1,5 +1,6 @@
 # Other
 *.swp
+libftcpp
 
 # Prerequisites
 *.d
