@@ -18,7 +18,7 @@ OBJS		=	$(FILES:%.cpp=$O%.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $O%.o:		%.cpp
 	@[ -d $O ] || mkdir -p $O
