@@ -1,17 +1,22 @@
 #******************************************************************************#
 #								COMPILER									   #
 #******************************************************************************#
-CXX			=	c++
+CXX			=	g++
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 #******************************************************************************#
 #								SOURCES										   #
 #******************************************************************************#
 NAME		=	phonebook
-FILES		=	phonebook.cpp
-INCLUDES	=	phonebook.hpp
-O			=	objs/
+FILES		=	PhoneBook.cpp Contact.cpp main.cpp
 OBJS		=	$(FILES:%.cpp=$O%.o)
+INCLUDES	=	PhoneBook.hpp Contact.hpp
+
+#******************************************************************************#
+#								DIRECTORIES									   #
+#******************************************************************************#
+O			=	objs/
+I			=	.
 
 #******************************************************************************#
 #								RULES										   #
@@ -19,11 +24,11 @@ OBJS		=	$(FILES:%.cpp=$O%.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $O%.o:		%.cpp
 	@[ -d $O ] || mkdir -p $O
-	@$(CXX) $(CXXFLAGS) -I $(INCLUDES) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -I $(I) -c $< -o $@
 
 clean:
 	@rm -rf $O
