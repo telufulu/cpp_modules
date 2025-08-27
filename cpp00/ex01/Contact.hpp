@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:26:50 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/26 15:33:00 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:34:16 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Contact
 		~Contact( void );
 
 		void		set( const std::string var, std::string content );
-		//std::string	get( std::string var);
+		std::string	get( const std::string var);
 
 	private:
 		std::string _firstName;
