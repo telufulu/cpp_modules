@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:39:11 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/27 14:08:19 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:28:00 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	menu( void )
 {
 	std::string	divider(52, '-');
-	
+
+	std::cout << "\033[2J\033[1;1H";	
 	std::cout << divider << std::endl;
 	std::cout << "|              *MY AWESOME PHONEBOOK*              |\n";
 	std::cout << divider << std::endl;
@@ -43,8 +44,6 @@ int	main( void )
 			pb.add();
 		else if (input == "SEARCH")
 			pb.search();
-		else
-			std::cout << "Wrong command. Please make sure is uppercase\n";
 	}
 	return (1);
 }
