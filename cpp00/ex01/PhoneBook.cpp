@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:01:10 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/28 16:47:47 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:29:32 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	header( void )
 
 	std::cout << divider << std::endl;
 	std::cout << "|" << std::setw(10) << "INDEX" << "|";
-	std::cout << std::setw(10) << " FIRST NAME" << "|";
-	std::cout << std::setw(10) << " LAST NAME" << "|";
-	std::cout << std::setw(10) << " NICKNAME" << "|" << std::endl;
+	std::cout << std::setw(10) << "FIRST NAME" << "|";
+	std::cout << std::setw(10) << "LAST NAME" << "|";
+	std::cout << std::setw(10) << "NICKNAME" << "|" << std::endl;
 	std::cout << divider << std::endl;
 }
 
@@ -64,13 +64,14 @@ void	getValues( Contact &contact, const int index )
 {
 	std::string	aux;
 
-	std::cout << "| " << std::setw(10) << index;
+	std::cout << "|" << std::setw(10) << index << "|";
 	aux = contact.get("firstName");
-	std::cout << "| " << std::setw(10) << aux.substr(0, 9) << ".";
+	std::cout << std::setw(10) << (aux.length() > 9 ? aux.substr(0, 9) + "." : aux) << "|";
 	aux = contact.get("lastName");
-	std::cout << "| " << std::setw(10) << aux.substr(0, 9) << ".";
+	std::cout << std::setw(10) << (aux.length() > 9 ? aux.substr(0, 9) + "." : aux) << "|";
 	aux = contact.get("nickname");
-	std::cout << "| " << std::setw(10) << aux.substr(0, 9) << ".\n";
+	std::cout << std::setw(10) << (aux.length() > 9 ? aux.substr(0, 9) + "." : aux) << "|";
+	std::cout << std::endl;
 }
 
 void	PhoneBook::search( void )
