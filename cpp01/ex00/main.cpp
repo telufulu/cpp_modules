@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 21:31:10 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/30 21:45:26 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/08/31 19:23:34 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main( void )
 
 	randomChump("Luis");
 	pepa = newZombie("Pepa");
-	//std::cout << pepa->announce << std::endl;
+	pepa->announce();
 	delete pepa;
 	return (0);
 }
