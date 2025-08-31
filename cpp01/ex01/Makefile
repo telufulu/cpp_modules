@@ -7,8 +7,8 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 #******************************************************************************#
 #								SOURCES										   #
 #******************************************************************************#
-NAME		=	BraiiiiiiinnnzzzZ
-FILES		=	Zombie.cpp randomChump.cpp newZombie.cpp main.cpp
+NAME		=	MoarBrainz
+FILES		=	Zombie.cpp zombieHorde.cpp main.cpp
 OBJS		=	$(FILES:%.cpp=$O%.o)
 
 #******************************************************************************#
