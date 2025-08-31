@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 19:35:56 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/31 19:58:06 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/08/31 20:26:52 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 int	main( void )
 {
 	int		numZombies = 420;
-	Zombie	*zombie = zombieHorde(numZombies, "Sam");
+	Zombie	*horde = zombieHorde(numZombies, "Sam");
 	
 	while (numZombies--)
-		zombie->announce();
+		horde[numZombies].announce();
+	delete[] horde;
 	return (0);
 }
