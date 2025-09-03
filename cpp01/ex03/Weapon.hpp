@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:29:02 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/31 20:33:02 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/08/31 23:33:53 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 class	Weapon
 {
 	public:
-		Weapon( void );
+		Weapon( std::string type );
 		~Weapon( void );
 
 	const std::string	&getType( void );
 	void				setType( std::string value );
 
 	private:
+		Weapon( void );
 		std::string	_type;
-}
+};
 
 #endif /* WEAPON */
