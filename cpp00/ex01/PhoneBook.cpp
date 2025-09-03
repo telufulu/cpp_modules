@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:01:10 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/28 17:29:32 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:58:48 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,24 @@ void	getValues( Contact &contact, const int index )
 	std::cout << std::endl;
 }
 
+int	showIndex( Contact contact[] )
+{
+	int			i = -1;
+	std::string	input;
+
+	std::cin >> input;
+	i = input[0] - '0';
+	if (input.length() > 1 || i < 0 || i > 7 || contact[i].get("firstName").empty())
+		return (1);
+	std::cout << "\033[2J\033[1;1H";
+	std::cout << "Name: \t" << contact[i].get("firstName") << std::endl;
+	std::cout << "Lastname: \t" << contact[i].get("firstName") << std::endl;
+	std::cout << "Nickname: \t" << contact[i].get("firstName") << std::endl;
+	std::cout << "Phone number: " << contact[i].get("firstName") << std::endl;
+	std::cout << "Dakest secret: " << contact[i].get("firstName") << std::endl;
+	return (0);
+}
+
 void	PhoneBook::search( void )
 {
 	int			index;
@@ -85,7 +103,12 @@ void	PhoneBook::search( void )
 		index = 0;
 		std::cout << "\033[2J\033[1;1H";
 		if (this->_contacts[index].get("firstName").empty())
+		{
 			std::cout << "No data\n";
+			std::cout << "\n(Type anything to exit principal page)\n";
+			std::cin >> input;
+			return ;
+		}
 		else
 			header();
 		while (index < 8 && !this->_contacts[index].get("firstName").empty())
@@ -93,8 +116,11 @@ void	PhoneBook::search( void )
 			getValues(this->_contacts[index], index);
 			++index;
 		}
-		std::cout << divider << std::endl;
-		std::cout << "\n(Type E to exit)\n";
+		std::cout << "\nSelect index to expand\n";
+		while (showIndex(this->_contacts))
+			std::cout << "Invalid input. Select an existing index between 0 and 7\n";
+		std::cout << "\n(Type E to exit principal page)\n";
+		std::cout << "\n(Type anything to return)\n";
 		std::cin >> input;
 	}
 }
