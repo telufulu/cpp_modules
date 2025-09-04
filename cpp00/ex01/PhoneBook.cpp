@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:01:10 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/03 13:58:48 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:06:51 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	setValue( Contact &contact, const std::string var )
 	std::string	aux;
 
 	std::cout << var << ": ";
-	std::cin >> aux;
+	std::getline(std::cin, aux);
 	contact.set(var, aux);
 }
 
@@ -79,16 +79,16 @@ int	showIndex( Contact contact[] )
 	int			i = -1;
 	std::string	input;
 
-	std::cin >> input;
+	std::getline(std::cin, input);
 	i = input[0] - '0';
 	if (input.length() > 1 || i < 0 || i > 7 || contact[i].get("firstName").empty())
 		return (1);
 	std::cout << "\033[2J\033[1;1H";
-	std::cout << "Name: \t" << contact[i].get("firstName") << std::endl;
-	std::cout << "Lastname: \t" << contact[i].get("firstName") << std::endl;
-	std::cout << "Nickname: \t" << contact[i].get("firstName") << std::endl;
-	std::cout << "Phone number: " << contact[i].get("firstName") << std::endl;
-	std::cout << "Dakest secret: " << contact[i].get("firstName") << std::endl;
+	std::cout << "Name: " << contact[i].get("firstName") << std::endl;
+	std::cout << "Lastname: " << contact[i].get("lastName") << std::endl;
+	std::cout << "Nickname: " << contact[i].get("nickname") << std::endl;
+	std::cout << "Phone number: " << contact[i].get("phoneNumber") << std::endl;
+	std::cout << "Dakest secret: " << contact[i].get("darkestSecret") << std::endl;
 	return (0);
 }
 
@@ -106,7 +106,7 @@ void	PhoneBook::search( void )
 		{
 			std::cout << "No data\n";
 			std::cout << "\n(Type anything to exit principal page)\n";
-			std::cin >> input;
+			std::getline(std::cin, input);
 			return ;
 		}
 		else
@@ -121,6 +121,6 @@ void	PhoneBook::search( void )
 			std::cout << "Invalid input. Select an existing index between 0 and 7\n";
 		std::cout << "\n(Type E to exit principal page)\n";
 		std::cout << "\n(Type anything to return)\n";
-		std::cin >> input;
+		std::getline(std::cin, input);
 	}
 }

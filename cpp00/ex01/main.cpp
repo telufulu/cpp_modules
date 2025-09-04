@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:39:11 by telufulu          #+#    #+#             */
-/*   Updated: 2025/08/28 15:28:00 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:06:20 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main( void )
 	while (1)
 	{
 		menu();
-		std::cin >> input;
+		std::getline(std::cin, input);
 		if (input == "EXIT")
 		{
 			std::cout << "PhoneBook deleted. Bye!\n";
