@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 22:56:00 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/04 21:02:00 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:06:13 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	main ( void )
 	Weapon weaponB = Weapon("claws");
 	HumanB catra("Catra");
 	
-
 	// Adora ataca con su espada
 	adora.attack();
-	
 	// Catra saca sus garras y ataca
 	catra.setWeapon(weaponB);
 	catra.attack();
