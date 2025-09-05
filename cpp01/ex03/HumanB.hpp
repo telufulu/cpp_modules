@@ -18,16 +18,17 @@
 class	HumanB
 {
 	public:
-		HumanB( std::string name );
-		~HumanB( void );
+		HumanB ( std::string name );
+		~HumanB ( void );
 
 		void	attack( void );
-		void	setWeapon( Weapon weapon);
+		void	setWeapon( Weapon &weapon );
+	
 	private:
-		HumanB( void );
-		
+		HumanB ( void );
+
 		std::string	_name;
-		Weapon		&_weapon;
+		Weapon		*_weapon;
 };
 
 #endif /* HUMANB */

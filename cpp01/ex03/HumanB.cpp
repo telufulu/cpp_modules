@@ -12,32 +12,25 @@
 
 #include "HumanB.hpp"
 #include "Weapon.hpp"
+#include <iostream>
 
-HumanA::HumanB ( void )
+HumanB::HumanB ( std::string name ) : _name(name), _weapon(NULL)
 {
 	return ;
 }
 
-HumanA::~HumanB ( void )
-{
-	return ;
-}
-
-HumanA::HumanB ( std::string name ) : _name(name)
+HumanB::~HumanB ( void )
 {
 	return ;
 }
 
 void	HumanB::attack( void )
 {
-	std::cout << this->_name << "attacks with their ";
-	if (this->_weapon)
-		std::cout << this->_weapon.type;
-	std::endl;
+	std::cout << this->_name << " attack with their ";
+	std::cout << this->_weapon->getType() << std::endl;
 }
 
-void	HumanB::setWeapon( Weapon weapon)
+void	HumanB::setWeapon ( Weapon &weapon )
 {
-	&this->_weapon = weapon;
-	return ;
+	this->_weapon = &weapon;
 }
