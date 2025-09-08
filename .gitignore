@@ -2,6 +2,7 @@
 *.swp
 libftcpp
 *.log
+.vscode
 
 # Prerequisites
 *.d
