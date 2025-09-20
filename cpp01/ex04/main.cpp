@@ -17,7 +17,6 @@ int main( int argc, char **argv )
 {
 	MyString		infile( argv[1] );
 
-
 	if (argc != 4 || !*argv[1] || !*argv[2])
 		return (error("Wrong arguments"));
 	if (infile.replace(argv[2], argv[3]))
