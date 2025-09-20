@@ -3,6 +3,7 @@
 libftcpp
 *.log
 .vscode
+*.replace
 
 # Prerequisites
 *.d
