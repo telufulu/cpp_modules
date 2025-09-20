@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Replace.cpp                                        :+:      :+:    :+:   */
+/*   Utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 18:12:19 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/08 18:12:22 by telufulu         ###   ########.fr       */
+/*   Created: 2025/09/19 22:14:47 by telufulu          #+#    #+#             */
+/*   Updated: 2025/09/19 22:14:48 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.hpp"
-#include <string>
+#include "Utils.hpp"
 
-int main(int argc, char **argv)
+int	error( const std::string error )
 {
-    std::string	filename = argv[1];
-    std::string	s1 = argv[2];
-    std::string	s2 = argv[3];
-
-	checkArgs();
-	filename = argv[1];
-	s1 = argv[2];
-	s2 = argv[3];
-	if (!argc)
-		return(1);
-	return (0);
+	std::cerr << "\x1b[31m" << error << "\x1b[0m" << std::endl;
+	return (1);
 }

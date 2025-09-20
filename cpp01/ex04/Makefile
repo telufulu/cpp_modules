@@ -8,7 +8,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 #								SOURCES										   #
 #******************************************************************************#
 NAME		=	Replace
-FILES		=	main.cpp Replace.cpp
+FILES		=	main.cpp MyString.cpp Utils.cpp
 OBJS		=	$(FILES:%.cpp=$O%.o)
 
 #******************************************************************************#
@@ -31,6 +31,7 @@ $O%.o:		%.cpp
 
 clean:
 	@rm -rf $O
+	@find . -name "*.replace" -delete
 
 fclean:	clean
 	@rm -rf $(NAME)
