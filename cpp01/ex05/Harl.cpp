@@ -48,7 +48,7 @@ void	Harl::_debug( void )
 
 void	Harl::_info( void )
 {
-	std::count << "[ INFO ]" << std::endl;
+	std::cout << "[ INFO ]" << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money" << std::endl;
 	return ;
 }
