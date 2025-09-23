@@ -12,10 +12,13 @@
 
 #include "Harl.hpp"
 
-int	main( int argc, char *argv[] )
+int	main( void )
 {
 	Harl	harl;
 
-	harl.complain(argv[argc - 1]);
+	harl.complain("debug");
+	harl.complain("info");
+	harl.complain("warning");
+	harl.complain("error");
 	return (0);
 }

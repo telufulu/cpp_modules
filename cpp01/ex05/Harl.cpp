@@ -30,10 +30,10 @@ void	Harl::complain( std::string level)
 		&Harl::_debug,
 		&Harl::_info,
 		&Harl::_warning,
-		&Harl::_error
+		&Harl::_error,
 	};
 	
-	while (names[++i][0])
+	while (!names[++i].empty())
 		if (level == names[i])
 			(this->*func[i])();
 	return ;
