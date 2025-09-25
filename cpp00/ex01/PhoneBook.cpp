@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:01:10 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/04 17:06:51 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:19:48 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	setValue( Contact &contact, const std::string var )
 
 	std::cout << var << ": ";
 	std::getline(std::cin, aux);
+	while (aux.empty())
+	{
+		std::cout << "Input cannot be empty. Please, introduce something";
+		std::cout << std::endl;
+		std::getline(std::cin, aux);
+	}
 	contact.set(var, aux);
 }
 
