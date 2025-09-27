@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:46:34 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/27 16:54:17 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/27 17:10:30 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Fixed
 		void	setRawBits( const int raw );
 	
 	private:
-		int	_fixedPoint;
+		int					_fixedPoint;
+		static const int	_fracBits = 8;
 };
 #endif
