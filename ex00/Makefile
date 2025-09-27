@@ -31,7 +31,6 @@ $O%.o:		%.cpp
 
 clean:
 	@rm -rf $O
-	@find . -name "*.replace" -delete
 
 fclean:	clean
 	@rm -rf $(NAME)
