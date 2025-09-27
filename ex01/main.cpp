@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:46:42 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/27 17:02:01 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/27 18:10:30 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@ int	main ( void )
 	const Fixed d( b );
 
 	a = Fixed( 1234.4321f );
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	std::cout << "[ A ]" << std::endl;
+	std::cout << "Raw bits: " << a.getRawBits() << std::endl;
+	std::cout << "Float is " << a << std::endl;
+	std::cout << "Int is " << a.toInt() << std::endl;
+	std::cout << "[ B ]" << std::endl;
+	std::cout << "Raw bits: " << b.getRawBits() << std::endl;
+	std::cout << "Float is " << b << std::endl;
+	std::cout << "Int is " << b.toInt() << std::endl;
+	std::cout << "[ C ]" << std::endl;
+	std::cout << "Raw bits: " << c.getRawBits() << std::endl;
+	std::cout << "Float is " << c << std::endl;
+	std::cout << "Int is " << c.toInt() << std::endl;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:46:29 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/27 16:53:54 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/09/27 18:46:18 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ Fixed::Fixed ( const Fixed &cpy )
 	if (this == &cpy)
 		return ;
 	this->_fixedPoint = cpy.getRawBits();
+	return ;
+}
+
+Fixed::Fixed ( const int &c )
+{
+	std::cout << "Int constructor called"<< std::endl;
+	this->_fixedPoint = c << this->_fracBits;
+	return ;
+}
+
+Fixed::Fixed ( const float &c )
+{
+	std::cout << "Float constructor called"<< std::endl;
+	this->_fixedPoint = static_cast<int>(roundf(c * (1 << this->_fracBits)));;
 	return ;
 }
 
@@ -53,4 +67,20 @@ void	Fixed::setRawBits( const int raw )
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_fixedPoint = raw;
 	return ;
+}
+
+int		Fixed::toInt( void ) const 
+{
+	return (this->_fixedPoint >> this->_fracBits);
+}
+
+float	Fixed::toFloat( void ) const
+{
+	return (static_cast<float>(this->_fixedPoint) / (1 << this->_fracBits));
+}
+
+std::ostream	&operator<<(std::ostream &out, const Fixed &obj)
+{
+	out << obj.toFloat();
+	return (out);
 }
