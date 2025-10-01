@@ -6,8 +6,111 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 21:05:15 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/28 21:05:29 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:07:30 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ClapTrap.hpp"
 
+/* ************************************************************************** */
+/*									CONSTRUCTORS							* */
+/* ************************************************************************** */
+ClapTrap::ClapTrap	( const std::string name ) : 
+	_name(name),
+	_hitPoints(10),
+	_energyPoints(10),
+	_attackDamage(0)
+{
+	std::cout << "\033[30mDefault constructor called\033[0m" << std::endl;
+	return ;
+}
+
+ClapTrap::ClapTrap	( const ClapTrap &cpy )
+{
+	std::cout << "\033[30mCopy constructor called\033[0m" << std::endl;
+	if (this == &cpy)
+		return;
+	this->_name = cpy.getName();
+	this->_hitPoints = cpy.getHitPoints();
+	this->_energyPoints = cpy.getEnergyPoints();
+	this->_attackDamage = cpy.getAttackDamage();
+	return ;
+}
+
+/* ************************************************************************** */
+/*									OPERATORS								* */
+/* ************************************************************************** */
+ClapTrap	&ClapTrap::operator=( const ClapTrap &rhs )
+{
+	if (this == &rhs)
+		return *this;
+	this->_name = rhs.getName();
+	this->_hitPoints = rhs.getHitPoints();
+	this->_energyPoints = rhs.getEnergyPoints();
+	this->_attackDamage = rhs.getAttackDamage();
+	return *this;
+}
+
+/* ************************************************************************** */
+/*									DESTRUCTOR								* */
+/* ************************************************************************** */
+ClapTrap::~ClapTrap	( void )
+{
+	std::cout << "\033[30mDestructor called\033[0m" << std::endl;
+	return ;
+}
+
+/* ************************************************************************** */
+/*								MEMBER FUNCTIONS							* */
+/* ************************************************************************** */
+std::string		ClapTrap::getName( void ) const
+{
+	return this->_name;
+}
+
+unsigned int	ClapTrap::getHitPoints( void ) const
+{
+	return this->_hitPoints;
+}
+
+unsigned int	ClapTrap::getEnergyPoints( void ) const
+{
+	return this->_energyPoints;
+}
+
+unsigned int	ClapTrap::getAttackDamage( void ) const
+{
+	return this->_attackDamage;
+}
+
+void			ClapTrap::set( const std::string var, unsigned int val)
+{
+	int			i = 0;
+	std::string	values[] = { "hitPoints", "energyPoints", "attackDamage" };
+
+	while (!values[i].empty() && values[i] != var )
+		++i;
+	switch (i)
+	{
+		case 0:
+			this->_hitPoints = val;
+			break ;
+		case 1:
+			this->_energyPoints = val;
+			break ;
+		case 2:
+			this->_attackDamage = val;
+			break ;
+	}
+	return ;
+}
+
+void			ClapTrap::attack( const std::string &target )
+{
+	std::cout << "ClapTrap " << this->_name << " attacks " << target;
+	std::cout << " causing " << this->_attackDamage << " points of damage!" << std::endl;
+}
+
+/* ************************************************************************** */
+/*								NON MEMBER FUNCTIONS						* */
+/* ************************************************************************** */

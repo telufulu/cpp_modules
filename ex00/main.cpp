@@ -6,8 +6,16 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 21:05:23 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/28 21:05:30 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/01 22:04:54 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ClapTrap.hpp"
 
+int	main( void )
+{
+	ClapTrap a("Pepe");
+
+	a.attack("Maria");
+	return 0;
+}
