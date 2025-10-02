@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 21:05:15 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/01 22:07:30 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/02 19:57:13 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,34 @@ void			ClapTrap::set( const std::string var, unsigned int val)
 
 void			ClapTrap::attack( const std::string &target )
 {
+	if (this->_energyPoints == 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " doesn't have enough movements " << std::endl;
+		return ;
+	}
+	--this->_energyPoints;
 	std::cout << "ClapTrap " << this->_name << " attacks " << target;
 	std::cout << " causing " << this->_attackDamage << " points of damage!" << std::endl;
+	return ;
+}
+
+void			ClapTrap::takeDamage ( unsigned int amount )
+{
+	this->_hitPoints -= amount;
+	return ;
+}
+
+void			ClapTrap::beRepaired ( unsigned int amount )
+{
+	if (this->_energyPoints == 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " doesn't have enough movements " << std::endl;
+		return ;
+	}
+	--this->_energyPoints;
+	std::cout << "ClapTrap " << this->_name << " heales " << amount << "HP" << std::endl;
+	this->_hitPoints += amount;
+	return ;
 }
 
 /* ************************************************************************** */
