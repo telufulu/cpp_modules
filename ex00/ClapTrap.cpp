@@ -15,19 +15,29 @@
 /* ************************************************************************** */
 /*									CONSTRUCTORS							* */
 /* ************************************************************************** */
-ClapTrap::ClapTrap	( const std::string name ) : 
+ClapTrap::ClapTrap	( void ) : 
+	_name("NO NAME"),
+	_hitPoints(0),
+	_energyPoints(0),
+	_attackDamage(0)
+{
+	std::cout << "\033[90mDefault constructor called\033[0m" << std::endl;
+	return ;
+}
+
+ClapTrap::ClapTrap	( const std::string &name ) : 
 	_name(name),
 	_hitPoints(10),
 	_energyPoints(10),
 	_attackDamage(0)
 {
-	std::cout << "\033[30mDefault constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mName constructor called\033[0m" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap	( const ClapTrap &cpy )
 {
-	std::cout << "\033[30mCopy constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mCopy constructor called\033[0m" << std::endl;
 	if (this == &cpy)
 		return;
 	this->_name = cpy.getName();
@@ -56,7 +66,7 @@ ClapTrap	&ClapTrap::operator=( const ClapTrap &rhs )
 /* ************************************************************************** */
 ClapTrap::~ClapTrap	( void )
 {
-	std::cout << "\033[30mDestructor called\033[0m" << std::endl;
+	std::cout << "\033[90mDestructor called\033[0m" << std::endl;
 	return ;
 }
 
@@ -112,6 +122,11 @@ void			ClapTrap::attack( const std::string &target )
 		std::cout << "ClapTrap " << this->_name << " doesn't have enough movements " << std::endl;
 		return ;
 	}
+	if (this->_hitPoints <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " is dead " << std::endl;
+		return ;
+	}
 	--this->_energyPoints;
 	std::cout << "ClapTrap " << this->_name << " attacks " << target;
 	std::cout << " causing " << this->_attackDamage << " points of damage!" << std::endl;
@@ -129,6 +144,11 @@ void			ClapTrap::beRepaired ( unsigned int amount )
 	if (this->_energyPoints == 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " doesn't have enough movements " << std::endl;
+		return ;
+	}
+	if (this->_hitPoints <= 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " is dead " << std::endl;
 		return ;
 	}
 	--this->_energyPoints;

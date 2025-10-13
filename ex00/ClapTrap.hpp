@@ -20,7 +20,8 @@ class	ClapTrap
 {
 	public:
 		//Constructors
-		ClapTrap( const std::string name );	//default
+		ClapTrap( void );					//default
+		ClapTrap( const std::string &name );
 		ClapTrap( const ClapTrap &cpy );	//copy
 
 		//Operators

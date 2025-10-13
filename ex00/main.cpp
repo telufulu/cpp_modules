@@ -23,6 +23,7 @@ int	main( void )
 	unsigned int	i = 10;
 	ClapTrap a("R2-D2");
 	ClapTrap b("Marvin");
+	ClapTrap c;
 
 	a.attack(b.getName());
 	b.takeDamage(a.getAttackDamage());
@@ -42,5 +43,8 @@ int	main( void )
 
 	while (--i)
 		a.attack(b.getName());
+
+	c.set("energyPoints", 10);
+	c.attack("Prueba");
 	return 0;
 }
