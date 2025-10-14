@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:15:19 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/14 10:15:20 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/14 19:05:42 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ class   Brain
 
         //Destructor
         ~Brain( void );
+
+		//Member functions
+		void	setIdea( std::string idea );
+		const	std::string getIdea( void ) const;
 
     private:
         std::string _ideas[100];
