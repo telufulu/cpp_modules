@@ -117,14 +117,14 @@ void			ClapTrap::set( const std::string var, unsigned int val)
 
 void			ClapTrap::attack( const std::string &target )
 {
+	if (this->_hitPoints == 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " is dead " << std::endl;
+		return ;
+	}
 	if (this->_energyPoints == 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " doesn't have enough movements " << std::endl;
-		return ;
-	}
-	if (this->_hitPoints <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name << " is dead " << std::endl;
 		return ;
 	}
 	--this->_energyPoints;
@@ -144,14 +144,14 @@ if (this->_hitPoints < amount)
 
 void			ClapTrap::beRepaired ( unsigned int amount )
 {
+	if (this->_hitPoints == 0)
+	{
+		std::cout << "ClapTrap " << this->_name << " is dead " << std::endl;
+		return ;
+	}
 	if (this->_energyPoints == 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " doesn't have enough movements " << std::endl;
-		return ;
-	}
-	if (this->_hitPoints <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name << " is dead " << std::endl;
 		return ;
 	}
 	--this->_energyPoints;
