@@ -42,13 +42,16 @@ Brain::Brain	( const Brain &cpy )
 /* ************************************************************************** */
 Brain	&Brain::operator=( const Brain &rhs )
 {
-    int i = -1;
+    int i = 0;
 
 	if (this == &rhs)
 		return *this;
     while (++i < 100)
+    {
         this->_ideas[i] = rhs._ideas[i];
-	return *this;
+        ++i;
+    }
+    return *this;
 }
 
 /* ************************************************************************** */
