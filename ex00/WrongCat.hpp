@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/14 09:26:59 by telufulu          #+#    #+#             */
+/*   Updated: 2025/10/14 09:27:00 by telufulu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
+
+# include "WrongAnimal.hpp"
+
+class   WrongCat:    public WrongAnimal
+{
+    public:
+        //Constructor
+        WrongCat( void );
+        WrongCat( const WrongCat &cpy );
+
+		//Operators
+		WrongCat  &operator=( const WrongCat &rhs );
+
+        //Destructor
+        ~WrongCat( void );
+};
+#endif /* WRONGCAT */

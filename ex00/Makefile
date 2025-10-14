@@ -7,8 +7,8 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 #******************************************************************************#
 #								SOURCES										   #
 #******************************************************************************#
-NAME		=	
-FILES		=	main.cpp
+NAME		=	Polymorphism
+FILES		=	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
 OBJS		=	$(FILES:%.cpp=$O%.o)
 
 #******************************************************************************#
