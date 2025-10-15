@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:27:12 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/14 09:27:13 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/15 08:58:30 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Dog::Dog	( void )
 Dog::Dog	( const Dog &cpy ) : Animal(cpy)
 {
 	std::cout << "\033[90mDog copy constructor called\033[0m" << std::endl;
+	this->_brain = new Brain(*cpy._brain);
 	return ;
 }
 
@@ -37,6 +38,7 @@ Dog	&Dog::operator=( const Dog &rhs )
 	if (this == &rhs)
 		return *this;
 	Animal::operator=(rhs);
+	*this->_brain = *rhs._brain;
 	return *this;
 }
 

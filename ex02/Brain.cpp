@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:17:12 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/14 10:17:14 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:05:33 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,22 @@ Brain::~Brain	( void )
 /* ************************************************************************** */
 /*								MEMBER FUNCTIONS    						* */
 /* ************************************************************************** */
+void	Brain::setIdea( std::string idea )
+{
+	int		i = 0;
+
+	if (idea.empty())
+		return ;
+	while (!this->_ideas[i].empty())
+		++i;
+	this->_ideas[i] = idea;
+	return ;
+
+}
+
+const std::string   &Brain::getIdea( int i ) const
+{
+    if (i < 100 && !this->_ideas[i].empty())
+        return this->_ideas[i];
+    return this->_ideas[i];
+}

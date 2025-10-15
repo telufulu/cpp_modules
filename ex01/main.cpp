@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:15:34 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/14 19:08:59 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:00:51 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,18 @@ int main( void )
 
     // Check deep copy Dog
     Dog     c;
-	Dog		d;
 
 	c.setIdea("My name is Toby");
-	c = d;
-	std::cout << "C: " << c.getIdea(0) << " ";
     c.makeSound();
-    d.setIdea("My name is Petra");
-	std::cout << "D: " << d.getIdea(0) << " ";
-    d.makeSound();
+	
+	Dog		d(c);
+	d.makeSound();
+	std::cout << "C: " << c.getIdea(0) << std::endl;
+	std::cout << "D: " << d.getIdea(0) << std::endl;
+
+	d.setIdea("I love bones");
+	std::cout << "C: " << c.getIdea(1) << std::endl;
+	std::cout << "D: " << d.getIdea(1) << std::endl;
     std::cout << std::endl;
 
     // Check destruction order

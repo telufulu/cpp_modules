@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:15:19 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/14 10:15:20 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:06:04 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@
 class   Brain
 {
     public:
-     //Constructor
+		//Constructor
         Brain( void );
         Brain( const Brain &cpy );
-
 		//Operators
 		Brain  &operator=( const Brain &rhs );
-
         //Destructor
         ~Brain( void );
+		//Member functions
+		void	setIdea( std::string idea );
+		const	std::string &getIdea( int i ) const;
 
     private:
         std::string _ideas[100];

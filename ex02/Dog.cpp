@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:27:12 by telufulu          #+#    #+#             */
-/*   Updated: 2025/10/14 09:27:13 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:06:32 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Dog::Dog	( void )
 Dog::Dog	( const Dog &cpy ) : AAnimal(cpy)
 {
 	std::cout << "\033[90mDog copy constructor called\033[0m" << std::endl;
+	this->_brain = new Brain(*cpy._brain);
 	return ;
 }
 
@@ -37,6 +38,7 @@ Dog	&Dog::operator=( const Dog &rhs )
 	if (this == &rhs)
 		return *this;
 	AAnimal::operator=(rhs);
+	*this->_brain = *rhs._brain;
 	return *this;
 }
 
@@ -53,8 +55,19 @@ Dog::~Dog	( void )
 /* ************************************************************************** */
 /*								MEMBER FUNCTIONS							* */
 /* ************************************************************************** */
-void    Dog::makeSound( void ) const
+
+void	Dog::setIdea( std::string idea )
 {
-    std::cout << "Woof! Woof!" << std::endl;
+	this->_brain->setIdea(idea);
 	return ;
+}
+
+const std::string	&Dog::getIdea( int i ) const
+{
+	return this->_brain->getIdea(i);
+}
+
+void	Dog::makeSound( void ) const
+{
+	std::cout << "Miauu" << std::endl;
 }
