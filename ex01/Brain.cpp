@@ -73,8 +73,12 @@ void	Brain::setIdea( std::string idea )
 	if (idea.empty())
 		return ;
 	while (!this->_ideas[i].empty())
-		++i;
-	this->_ideas[i] = idea;
+	{
+        ++i;
+        if (i >= 100)
+            return ;
+    }
+    this->_ideas[i] = idea;
 	return ;
 
 }
@@ -83,5 +87,5 @@ const std::string   &Brain::getIdea( int i ) const
 {
     if (i < 100 && !this->_ideas[i].empty())
         return this->_ideas[i];
-    return this->_ideas[i];
+    return this->_ideas[99];
 }

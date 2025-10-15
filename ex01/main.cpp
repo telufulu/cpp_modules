@@ -43,6 +43,8 @@ int main( void )
 	d.setIdea("I love bones");
 	std::cout << "C: " << c.getIdea(1) << std::endl;
 	std::cout << "D: " << d.getIdea(1) << std::endl;
+    std::cout << "C: " << c.getIdea(100) << std::endl;
+	std::cout << "D: " << d.getIdea(100) << std::endl;
     std::cout << std::endl;
 
     // Check destruction order
