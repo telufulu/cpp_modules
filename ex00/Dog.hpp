@@ -21,11 +21,11 @@ class   Dog:    public Animal
         //Constructor
         Dog( void );
         Dog( const Dog &cpy );
-
 		//Operators
 		Dog  &operator=( const Dog &rhs );
-
         //Destructor
         ~Dog( void );
+    	// Member functions
+        virtual void	makeSound( void ) const;
 };
 #endif /* DOG */

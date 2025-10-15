@@ -21,11 +21,11 @@ class   WrongCat:    public WrongAnimal
         //Constructor
         WrongCat( void );
         WrongCat( const WrongCat &cpy );
-
 		//Operators
 		WrongCat  &operator=( const WrongCat &rhs );
-
         //Destructor
         ~WrongCat( void );
+        // Member functions
+        void	makeSound( void ) const;
 };
-#endif /* WRONGCAT */
+#endif /* WrongCat */

@@ -47,3 +47,11 @@ Cat::~Cat	( void )
 	std::cout << "\033[90mCat destructor called\033[0m" << std::endl;
 	return ;
 }
+
+/* ************************************************************************** */
+/*								MEMBER FUNCTIONS							* */
+/* ************************************************************************** */
+void    Cat::makeSound( void ) const
+{
+    std::cout << "Miauu" << std::endl;
+}

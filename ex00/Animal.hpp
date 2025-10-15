@@ -21,13 +21,10 @@ class   Animal
     	//Constructors
         Animal( void );
 		Animal( const Animal &cpy );
-
 		//Operators
 		Animal  &operator=( const Animal &rhs );
-
 		//Destructor
 		virtual ~Animal( void );
-
 		// Member functions
         virtual void	makeSound( void ) const;
         std::string		getType( void ) const;

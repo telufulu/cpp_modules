@@ -47,3 +47,11 @@ WrongCat::~WrongCat	( void )
 	std::cout << "\033[90mWrongCat destructor called\033[0m" << std::endl;
 	return ;
 }
+
+/* ************************************************************************** */
+/*								MEMBER FUNCTIONS							* */
+/* ************************************************************************** */
+void    WrongCat::makeSound( void ) const
+{
+    std::cout << "Miauu" << std::endl;
+}

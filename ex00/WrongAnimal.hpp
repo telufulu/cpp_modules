@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef WRONGWrongAnimal_HPP
+# define WRONGWrongAnimal_HPP
 
 # include <iostream>
 
@@ -21,15 +21,12 @@ class   WrongAnimal
     	//Constructors
         WrongAnimal( void );
 		WrongAnimal( const WrongAnimal &cpy );
-
 		//Operators
 		WrongAnimal  &operator=( const WrongAnimal &rhs );
-
 		//Destructor
 		~WrongAnimal( void );
-
 		// Member functions
-        void	makeSound( void ) const;
+        void			makeSound( void ) const;
         std::string		getType( void ) const;
 
     protected:

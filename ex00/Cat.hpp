@@ -21,11 +21,11 @@ class   Cat:    public Animal
         //Constructor
         Cat( void );
         Cat( const Cat &cpy );
-
 		//Operators
 		Cat  &operator=( const Cat &rhs );
-
         //Destructor
         ~Cat( void );
+		// Member functions
+        virtual void	makeSound( void ) const;
 };
 #endif /* CAT */

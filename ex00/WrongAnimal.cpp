@@ -54,10 +54,7 @@ WrongAnimal::~WrongAnimal	( void )
 /* ************************************************************************** */
 void    WrongAnimal::makeSound( void ) const
 {
-    if (!type.empty() && type == "WrongCat")
-        std::cout << "Miau??" << std::endl;
-    else
-        std::cout << "[ Strange sound. This can't be an animal... ]" << std::endl;
+    std::cout << "[ Strange sound. What is this random creature? ]" << std::endl;
 }
 
 std::string WrongAnimal::getType( void ) const

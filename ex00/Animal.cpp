@@ -54,23 +54,7 @@ Animal::~Animal	( void )
 /* ************************************************************************** */
 void    Animal::makeSound( void ) const
 {
-    int         i = 0;
-    std::string types[] = {"Dog", "Cat"};
-
-    while (!types[i].empty() && types[i] != this->type)
-        ++i;
-    switch (i)
-    {
-        case 0:
-            std::cout << "Woof! Woof!" << std::endl;
-            break ;
-        case 1:
-            std::cout << "Miauu" << std::endl;
-            break ;
-        default:
-            std::cout << "[ Strange sound. What is this random creature? ]" << std::endl;
-    }
-
+    std::cout << "[ Strange sound. What is this random creature? ]" << std::endl;
 }
 
 std::string Animal::getType( void ) const
