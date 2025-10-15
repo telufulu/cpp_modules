@@ -22,13 +22,14 @@ class   Dog:    public Animal
         //Constructor
         Dog( void );
         Dog( const Dog &cpy );
-
 		//Operators
 		Dog  &operator=( const Dog &rhs );
-
         //Destructor
         ~Dog( void );
-    
+		//Member functions
+		void	setIdea( std::string idea );
+		const	std::string &getIdea( int i ) const;
+
     private:
         Brain   *_brain;
 };

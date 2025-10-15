@@ -66,7 +66,7 @@ Brain::~Brain	( void )
 /* ************************************************************************** */
 /*								MEMBER FUNCTIONS    						* */
 /* ************************************************************************** */
-void	Cat::setIdea( std::string idea )
+void	Brain::setIdea( std::string idea )
 {
 	int		i = 0;
 
@@ -77,4 +77,11 @@ void	Cat::setIdea( std::string idea )
 	this->_ideas[i] = idea;
 	return ;
 
+}
+
+const std::string   &Brain::getIdea( int i ) const
+{
+    if (i < 100 && !this->_ideas[i].empty())
+        return this->_ideas[i];
+    return this->_ideas[i];
 }

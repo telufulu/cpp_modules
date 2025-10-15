@@ -58,8 +58,11 @@ Cat::~Cat	( void )
 
 void	Cat::setIdea( std::string idea )
 {
-	if (idea.empty())
-		return ;
-	this->_brain.setIdea(idea);
+	this->_brain->setIdea(idea);
 	return ;
+}
+
+const std::string	&Cat::getIdea( int i ) const
+{
+	return this->_brain->getIdea(i);
 }

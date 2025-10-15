@@ -16,28 +16,44 @@
 
 int main( void )
 {
-    const Animal    *j = new Dog();
-    const Animal    *x = new Cat();
+	// Check deep copy Cat
     Cat     a;
 	Cat		b;
 
-	// Check deep copy
-    a.makeSound();
 	a.setIdea("My name is Silvestre");
-    b.makeSound();
 	b.setIdea("My name is Kobu");
 	a = b;
+	std::cout << "A: " << a.getIdea(0) << " ";
+    a.makeSound();
+	std::cout << "B: " << b.getIdea(0) << " ";
+    b.makeSound();
+    std::cout << std::endl;
 
-	std::cout << "A: " << a.getIdea() << std::endl;
-	std::cout << "B: " << b.getIdea() << std::endl;
+    // Check deep copy Dog
+    Dog     c;
+	Dog		d;
 
-	j->makeSound();
-    delete x;
-    x = j;
+	c.setIdea("My name is Toby");
+	c = d;
+	std::cout << "C: " << c.getIdea(0) << " ";
+    c.makeSound();
+    d.setIdea("My name is Petra");
+	std::cout << "D: " << d.getIdea(0) << " ";
+    d.makeSound();
+    std::cout << std::endl;
+
+    // Check destruction order
+    const Animal    *j = new Dog();
+    const Animal    *x = new Cat();
+	
+    j->makeSound();
     x->makeSound();
+    delete x;
     delete j;
+    std::cout << std::endl;
 
-    /*const Animal    *farm[100];
+    //Check array of animals
+    const Animal    *farm[100];
     int             i = 0;
 
     while (i < 50)
@@ -54,6 +70,5 @@ int main( void )
 
     q->makeSound();
     delete p;
-    */
 	return (0);
 }

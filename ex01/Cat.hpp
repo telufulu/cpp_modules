@@ -22,16 +22,13 @@ class   Cat:    public Animal
         //Constructor
         Cat( void );
         Cat( const Cat &cpy );
-
 		//Operators
 		Cat  &operator=( const Cat &rhs );
-
         //Destructor
         ~Cat( void );
-
 		//Member functions
 		void	setIdea( std::string idea );
-		const	std::string getIdea( void ) const;
+		const	std::string &getIdea( int i ) const;
 
 	private:
         Brain   *_brain;

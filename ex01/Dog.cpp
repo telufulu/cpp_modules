@@ -49,3 +49,18 @@ Dog::~Dog	( void )
 	delete this->_brain;
 	return ;
 }
+
+/* ************************************************************************** */
+/*								MEMBER FUNCTIONS							* */
+/* ************************************************************************** */
+
+void	Dog::setIdea( std::string idea )
+{
+	this->_brain->setIdea(idea);
+	return ;
+}
+
+const std::string	&Dog::getIdea( int i ) const
+{
+	return this->_brain->getIdea(i);
+}

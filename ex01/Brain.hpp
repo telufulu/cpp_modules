@@ -30,7 +30,7 @@ class   Brain
 
 		//Member functions
 		void	setIdea( std::string idea );
-		const	std::string getIdea( void ) const;
+		const	std::string &getIdea( int i ) const;
 
     private:
         std::string _ideas[100];
