@@ -83,7 +83,7 @@ void	Brain::setIdea( std::string idea )
 
 }
 
-const std::string   &Brain::getIdea( int i ) const
+const std::string   &Brain::getIdea( unsigned int i ) const
 {
     if (i < 100 && !this->_ideas[i].empty())
         return this->_ideas[i];
