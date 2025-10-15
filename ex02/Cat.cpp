@@ -62,12 +62,12 @@ void	Cat::setIdea( std::string idea )
 	return ;
 }
 
-const std::string	&Cat::getIdea( int i ) const
+const std::string	&Cat::getIdea( unsigned int i ) const
 {
 	return this->_brain->getIdea(i);
 }
 
-void	Cat::makeSound( void ) const
+void    Cat::makeSound( void ) const
 {
-	std::cout << "Miauu" << std::endl;
+    std::cout << "Miauu" << std::endl;
 }

@@ -62,12 +62,12 @@ void	Dog::setIdea( std::string idea )
 	return ;
 }
 
-const std::string	&Dog::getIdea( int i ) const
+const std::string	&Dog::getIdea( unsigned int i ) const
 {
 	return this->_brain->getIdea(i);
 }
 
-void	Dog::makeSound( void ) const
+void    Dog::makeSound( void ) const
 {
-	std::cout << "Miauu" << std::endl;
+    std::cout << "Woof! Woof!" << std::endl;
 }

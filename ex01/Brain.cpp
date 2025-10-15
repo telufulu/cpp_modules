@@ -73,12 +73,9 @@ void	Brain::setIdea( std::string idea )
 	if (idea.empty())
 		return ;
 	while (!this->_ideas[i].empty())
-	{
-        ++i;
-        if (i >= 100)
-            return ;
-    }
-    this->_ideas[i] = idea;
+		++i;
+    if (i < 100)
+	    this->_ideas[i] = idea;
 	return ;
 
 }

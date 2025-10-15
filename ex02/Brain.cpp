@@ -46,7 +46,7 @@ Brain	&Brain::operator=( const Brain &rhs )
 
 	if (this == &rhs)
 		return *this;
-    while (++i < 100)
+    while (i < 100)
     {
         this->_ideas[i] = rhs._ideas[i];
         ++i;
@@ -74,14 +74,15 @@ void	Brain::setIdea( std::string idea )
 		return ;
 	while (!this->_ideas[i].empty())
 		++i;
-	this->_ideas[i] = idea;
+    if (i < 100)
+	    this->_ideas[i] = idea;
 	return ;
 
 }
 
-const std::string   &Brain::getIdea( int i ) const
+const std::string   &Brain::getIdea( unsigned int i ) const
 {
     if (i < 100 && !this->_ideas[i].empty())
         return this->_ideas[i];
-    return this->_ideas[i];
+    return this->_ideas[99];
 }

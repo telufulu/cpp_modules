@@ -27,7 +27,7 @@ class   Brain
         ~Brain( void );
 		//Member functions
 		void	setIdea( std::string idea );
-		const	std::string &getIdea( int i ) const;
+		const	std::string &getIdea( unsigned int i ) const;
 
     private:
         std::string _ideas[100];

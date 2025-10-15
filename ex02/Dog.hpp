@@ -28,8 +28,8 @@ class   Dog:    public AAnimal
         ~Dog( void );
 		//Member functions
 		void	setIdea( std::string idea );
-		const	std::string &getIdea( int i ) const;
-		void	makeSound( void ) const;
+		const	std::string &getIdea( unsigned int i ) const;
+        void	makeSound( void ) const;
 
     private:
         Brain   *_brain;

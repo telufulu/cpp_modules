@@ -16,13 +16,13 @@
 /* ************************************************************************** */
 AAnimal::AAnimal	( void ) : type("Random")
 {
-	std::cout << "\033[90mAnimal default constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mAAnimal default constructor called\033[0m" << std::endl;
 	return ;
 }
 
 AAnimal::AAnimal	( const AAnimal &cpy )
 {
-	std::cout << "\033[90mAnimal copy constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mAAnimal copy constructor called\033[0m" << std::endl;
 	if (this == &cpy)
 		return;
 	this->type = cpy.getType();
@@ -45,7 +45,7 @@ AAnimal	&AAnimal::operator=( const AAnimal &rhs )
 /* ************************************************************************** */
 AAnimal::~AAnimal	( void )
 {
-	std::cout << "\033[90mAnimal destructor called\033[0m" << std::endl;
+	std::cout << "\033[90mAAnimal destructor called\033[0m" << std::endl;
 	return ;
 }
 
