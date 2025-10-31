@@ -59,3 +59,18 @@ También se introduce la sobrecarga de operadores para crear comportamientos ari
 | **ex03** | *BSP (Binary Space Partitioning)* | Utiliza las clases `Fixed` y `Point` para determinar si un punto se encuentra dentro de un triángulo, reforzando la precisión y el uso correcto de `const`. |
 
 ---
+
+## CPP03 — Herencia
+
+El objetivo de este módulo es explorar la herencia y la organización jerárquica de clases en C++.  
+Se explica cómo reutilizar funcionalidad de una clase base, extender o modificar su comportamiento en clases derivadas y gestionar correctamente las llamadas a constructores y destructores dentro de la cadena de herencia.  
+También se introduce la herencia múltiple y la resolución de ambigüedades entre clases padre.
+
+| Ejercicio | Título | Descripción |
+|------------|---------|-------------|
+| **ex00** | *ClapTrap* | Definición de una clase base con atributos y métodos como `attack`, `takeDamage` y `beRepaired`. Establece la base de la herencia. |
+| **ex01** | *ScavTrap* | Clase derivada de `ClapTrap` que introduce un modo especial llamado `guardGate`, demostrando la llamada en cadena a constructores y destructores. |
+| **ex02** | *FragTrap* | Clase derivada con diferentes valores de atributos y una nueva función `highFivesGuys()`. |
+| **ex03** | *DiamondTrap* | Ejemplo de herencia múltiple que combina `ScavTrap` y `FragTrap`, mostrando la resolución de ambigüedades y el orden correcto de construcción. |
+
+---

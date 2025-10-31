@@ -59,3 +59,18 @@ Operator overloading is also introduced to create intuitive arithmetic and compa
 | **ex03** | *BSP (Binary Space Partitioning)* | Uses the `Fixed` and `Point` classes to determine whether a point lies inside a triangle, reinforcing precision and const correctness. |
 
 ---
+
+## CPP03 — Inheritance
+
+The goal of this module is to explore inheritance and the organization of class hierarchies in C++.  
+It explains how to reuse functionality from a base class, extend or modify behavior in derived classes, and manage constructor and destructor calls through the inheritance chain.  
+The concept of multiple inheritance is also introduced, including the resolution of ambiguities between parent classes.
+
+| Exercise | Title | Description |
+|-----------|--------|-------------|
+| **ex00** | *ClapTrap* | Definition of a base class with attributes and methods such as `attack`, `takeDamage`, and `beRepaired`. Establishes the foundation for inheritance. |
+| **ex01** | *ScavTrap* | Derived class from `ClapTrap` that introduces a special mode called `guardGate`, demonstrating constructor and destructor chaining. |
+| **ex02** | *FragTrap* | Derived class with different attribute values and a new function `highFivesGuys()`. |
+| **ex03** | *DiamondTrap* | Example of multiple inheritance combining `ScavTrap` and `FragTrap`, demonstrating ambiguity resolution and constructor order management. |
+
+---
