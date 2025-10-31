@@ -74,3 +74,19 @@ También se introduce la herencia múltiple y la resolución de ambigüedades en
 | **ex03** | *DiamondTrap* | Ejemplo de herencia múltiple que combina `ScavTrap` y `FragTrap`, mostrando la resolución de ambigüedades y el orden correcto de construcción. |
 
 ---
+
+
+## CPP04 — Polimorfismo, clases abstractas e interfaces
+
+El objetivo de este módulo es dominar el polimorfismo y la abstracción en C++.  
+Se trabajan las funciones virtuales, los destructores virtuales y la implementación de clases abstractas que definen interfaces.  
+Los ejercicios se centran en diseñar jerarquías de clases flexibles, combinando herencia con composición, y en gestionar correctamente los recursos mediante copias profundas y enlace dinámico.
+
+| Ejercicio | Título | Descripción |
+|------------|---------|-------------|
+| **ex00** | *Polymorphism* | Introducción a las funciones virtuales mediante una clase base `Animal` y clases derivadas `Dog` y `Cat`. Demuestra el despacho dinámico. |
+| **ex01** | *I don’t want to set the world on fire* | Introducción de una clase `Brain` como miembro de `Dog` y `Cat`, destacando la composición y la importancia de las copias profundas. |
+| **ex02** | *Abstract Animals* | Conversión de `Animal` en una clase abstracta (`AAnimal`) con funciones virtuales puras, ilustrando el diseño basado en interfaces. |
+| **ex03** | *Materia* | Implementación de un pequeño sistema inspirado en los RPG, con `AMateria`, `ICharacter`, `Character` y `MateriaSource`, aplicando polimorfismo e interacción entre interfaces. |
+
+---

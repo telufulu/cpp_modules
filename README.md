@@ -74,3 +74,19 @@ The concept of multiple inheritance is also introduced, including the resolution
 | **ex03** | *DiamondTrap* | Example of multiple inheritance combining `ScavTrap` and `FragTrap`, demonstrating ambiguity resolution and constructor order management. |
 
 ---
+
+
+## CPP04 — Polymorphism, Abstract Classes, and Interfaces
+
+The goal of this module is to master polymorphism and abstraction in C++.  
+It covers virtual functions, virtual destructors, and the implementation of abstract classes that define interfaces.  
+The exercises focus on designing flexible class hierarchies, combining inheritance with composition, and managing resources correctly through deep copies and dynamic binding.
+
+| Exercise | Title | Description |
+|-----------|--------|-------------|
+| **ex00** | *Polymorphism* | Introduction to virtual functions through a base class `Animal` and derived classes `Dog` and `Cat`. Demonstrates dynamic dispatch. |
+| **ex01** | *I don’t want to set the world on fire* | Introduction of a `Brain` class as a member of `Dog` and `Cat`, emphasizing composition and proper copy semantics (deep copy). |
+| **ex02** | *Abstract Animals* | Conversion of `Animal` into an abstract class (`AAnimal`) with pure virtual functions, illustrating interface-based design. |
+| **ex03** | *Materia* | Implementation of a small RPG-inspired system involving `AMateria`, `ICharacter`, `Character`, and `MateriaSource`, applying polymorphism and interface interaction. |
+
+---
