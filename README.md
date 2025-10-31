@@ -44,3 +44,18 @@ The exercises also include file manipulation and object composition through rela
 | **ex05** | *Harl 2.0* | Class that outputs messages corresponding to different log levels (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
 
 ---
+
+## CPP02 — Canonical Form and Operator Overloading
+
+The goal of this module is to learn how to design robust and reusable C++ classes that follow the Orthodox Canonical Form.  
+It emphasizes proper handling of constructors, destructors, copy constructors, and assignment operators.  
+Operator overloading is also introduced to create intuitive arithmetic and comparison behaviors for user-defined classes.
+
+| Exercise | Title | Description |
+|-----------|--------|-------------|
+| **ex00** | *My First Class in Orthodox Form* | Implementation of a basic `Fixed` class that follows the Orthodox Canonical Form, including constructors, destructors, and the assignment operator. |
+| **ex01** | *Towards a Fixed Point* | Extension of the `Fixed` class to include conversions between integers and floating-point values, and formatted output via `std::cout`. |
+| **ex02** | *Now We’re Talking Arithmetic* | Adds overloaded operators for arithmetic (`+`, `-`, `*`, `/`), comparison, and increment/decrement. |
+| **ex03** | *BSP (Binary Space Partitioning)* | Uses the `Fixed` and `Point` classes to determine whether a point lies inside a triangle, reinforcing precision and const correctness. |
+
+---

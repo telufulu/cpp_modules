@@ -44,3 +44,18 @@ Los ejercicios también incluyen manipulación de archivos y composición de obj
 | **ex05** | *Harl 2.0* | Clase que muestra mensajes correspondientes a distintos niveles de registro (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
 
 ---
+
+## CPP02 — Forma canónica y sobrecarga de operadores
+
+El objetivo de este módulo es aprender a diseñar clases robustas y reutilizables en C++ siguiendo la Forma Canónica Ortodoxa.  
+Se trabaja el manejo correcto de constructores, destructores, constructores de copia y operadores de asignación.  
+También se introduce la sobrecarga de operadores para crear comportamientos aritméticos y de comparación intuitivos en clases definidas por el usuario.
+
+| Ejercicio | Título | Descripción |
+|------------|---------|-------------|
+| **ex00** | *My First Class in Orthodox Form* | Implementación de una clase básica `Fixed` que sigue la Forma Canónica Ortodoxa, incluyendo constructores, destructores y operador de asignación. |
+| **ex01** | *Towards a Fixed Point* | Extensión de la clase `Fixed` para incluir conversiones entre enteros y números en coma flotante, y salida formateada con `std::cout`. |
+| **ex02** | *Now We’re Talking Arithmetic* | Añade sobrecarga de operadores aritméticos (`+`, `-`, `*`, `/`), de comparación y de incremento/decremento. |
+| **ex03** | *BSP (Binary Space Partitioning)* | Utiliza las clases `Fixed` y `Point` para determinar si un punto se encuentra dentro de un triángulo, reforzando la precisión y el uso correcto de `const`. |
+
+---
