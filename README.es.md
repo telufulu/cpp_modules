@@ -27,3 +27,20 @@ Los ejercicios también exploran los miembros `static` y su diferencia respecto 
 | **ex02** | *The Account* | Simulación de un sistema bancario que introduce atributos y métodos `static`, contadores de clase y salida formateada. |
 
 ---
+
+## CPP01 — Memoria, punteros, referencias y heap
+
+El objetivo de este módulo es comprender cómo funciona la gestión de memoria en C++.  
+Se introduce la diferencia entre asignación en el stack y en el heap, el uso de punteros y referencias, y el papel de los constructores y destructores en el ciclo de vida de los objetos.  
+Los ejercicios también incluyen manipulación de archivos y composición de objetos mediante relaciones entre clases.
+
+| Ejercicio | Título | Descripción |
+|------------|---------|-------------|
+| **ex00** | *The Job of Your Dreams* | Demuestra la diferencia entre puntero y referencia manipulando una misma variable de dos formas distintas. |
+| **ex01** | *Zombie* | Define una clase `Zombie` y compara objetos creados en el stack y en el heap. |
+| **ex02** | *Zombie Horde* | Reserva dinámicamente un array de Zombies con `new[]` y libera la memoria con `delete[]`. |
+| **ex03** | *Weapon, HumanA & HumanB* | Explora la composición y el uso de referencias en clases. `HumanA` utiliza una referencia a un `Weapon`, mientras que `HumanB` mantiene un puntero. |
+| **ex04** | *Sed is for losers* | Ejercicio de manipulación de archivos que reemplaza todas las apariciones de una cadena por otra y escribe el resultado en un nuevo archivo. |
+| **ex05** | *Harl 2.0* | Clase que muestra mensajes correspondientes a distintos niveles de registro (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
+
+---

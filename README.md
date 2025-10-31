@@ -27,3 +27,20 @@ The exercises also explore `static` members and their difference from instance a
 | **ex02** | *The Account* | Simulation of a banking system introducing `static` attributes and methods, class-wide counters, and formatted output. |
 
 ---
+
+## CPP01 — Memory, Pointers, References, and Heap
+
+The goal of this module is to develop an understanding of how memory management works in C++.  
+It introduces the difference between stack and heap allocation, the use of pointers and references, and the role of constructors and destructors in object lifetime.  
+The exercises also include file manipulation and object composition through relationships between classes.
+
+| Exercise | Title | Description |
+|-----------|--------|-------------|
+| **ex00** | *The Job of Your Dreams* | Demonstrates the distinction between a pointer and a reference by manipulating the same variable in two different ways. |
+| **ex01** | *Zombie* | Defines a `Zombie` class and compares objects created on the stack and on the heap. |
+| **ex02** | *Zombie Horde* | Dynamically allocates an array of Zombies using `new[]` and releases memory with `delete[]`. |
+| **ex03** | *Weapon, HumanA & HumanB* | Explores composition and the use of references within classes. `HumanA` uses a reference to a `Weapon`, while `HumanB` holds a pointer. |
+| **ex04** | *Sed is for losers* | File manipulation exercise that replaces all occurrences of a string with another and writes the output to a new file. |
+| **ex05** | *Harl 2.0* | Class that outputs messages corresponding to different log levels (`DEBUG`, `INFO`, `WARNING`, `ERROR`). |
+
+---
