@@ -2,7 +2,7 @@
 
 # Módulos de C++ – 42 School  
 
-Este repositorio contiene todos mis proyectos del cursus de C++ de 42.  
+Este repositorio contiene todos los módulos de C++ de 42.  
 Cada módulo introduce nuevos conceptos de programación orientada a objetos, aumentando progresivamente en dificultad — desde el diseño básico de clases hasta la herencia, el polimorfismo y la gestión de memoria.  
 
 ### El objetivo  
