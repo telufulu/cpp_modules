@@ -1,0 +1,92 @@
+#!/bin/bash
+
+NAME=$1
+
+if [ -z "$NAME" ]; then
+    echo "\033[31mUsage: mkclass ClassName\033[0m"
+    exit 1
+fi
+
+HPP_FILE="${NAME}.hpp"
+CPP_FILE="${NAME}.cpp"
+GUARD="$(echo ${NAME}_HPP | tr '[:lower:]' '[:upper:]')"
+
+cat > $HPP_FILE <<EOF
+#ifndef ${GUARD}
+# define ${GUARD}
+
+# include <iostream>	// cout
+
+class ${NAME}
+{
+	public:
+		// Constructors
+		${NAME}( void );		//default
+		${NAME}( const ${NAME} &cpy );	//copy
+
+		// Arithmetic operators
+		${NAME} &operator=( const ${NAME} &rhs );
+
+		// Destructor
+		~${NAME}( void );
+	private:
+		int	_data;
+};
+
+#endif
+EOF
+
+cat > $CPP_FILE <<EOF
+#include "${NAME}.hpp"
+
+/* ****************************************************************************	*/
+/*				CONSTRUCTORS					*/
+/* ****************************************************************************	*/
+
+${NAME}::${NAME} ( void ) : _data(0)
+{
+	//std::cout << "Default constructor called" << std::endl;
+	return ;
+}
+
+${NAME}::${NAME} ( const ${NAME} &cpy)
+{
+	//std::cout << "Copy constructor called" << std::endl;
+	this->_data = cpy._data;
+	return ;
+}
+
+/* ****************************************************************************	*/
+/*				OPERATORS					*/
+/* ****************************************************************************	*/
+
+${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
+{
+	//std::cout << "Copy operator called" << std::endl;
+	if (this == &cpy)
+		return *this;
+	this->_data = cpy._data;
+	return *this;
+}
+
+/* ****************************************************************************	*/
+/*				DESTRUCTOR					*/
+/* ****************************************************************************	*/
+
+${NAME}::~${NAME} ( void )
+{
+	//std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
+/* ****************************************************************************	*/
+/*				MEMBER FUNCTIONS				*/
+/* ****************************************************************************	*/
+
+/* ****************************************************************************	*/
+/*				NON MEMBER FUNCTIONS				*/
+/* ****************************************************************************	*/
+
+EOF
+
+echo "Class ${NAME} created."
