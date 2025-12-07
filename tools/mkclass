@@ -7,8 +7,16 @@ if [ -z "$NAME" ]; then
     exit 1
 fi
 
-HPP_FILE="${NAME}.hpp"
-CPP_FILE="${NAME}.cpp"
+if [ ! -d srcs ]; then
+	mkdir srcs
+fi
+
+if [ ! -d inc ]; then
+	mkdir inc
+fi
+
+HPP_FILE="inc/${NAME}.hpp"
+CPP_FILE="srcs/${NAME}.cpp"
 GUARD="$(echo ${NAME}_HPP | tr '[:lower:]' '[:upper:]')"
 
 cat > $HPP_FILE <<EOF
@@ -21,8 +29,8 @@ class ${NAME}
 {
 	public:
 		// Constructors
-		${NAME}( void );		//default
-		${NAME}( const ${NAME} &cpy );	//copy
+		${NAME}( void );
+		${NAME}( const ${NAME} &cpy );
 
 		// Arithmetic operators
 		${NAME} &operator=( const ${NAME} &rhs );
@@ -63,9 +71,9 @@ ${NAME}::${NAME} ( const ${NAME} &cpy)
 ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 {
 	//std::cout << "Copy operator called" << std::endl;
-	if (this == &cpy)
+	if (this == &rhs)
 		return *this;
-	this->_data = cpy._data;
+	this->_data = rhs._data;
 	return *this;
 }
 

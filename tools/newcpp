@@ -1,0 +1,74 @@
+#!/bin/bash
+
+NAME=$1
+
+if [ -z "$NAME" ]; then
+    echo "\033[31mUsage error:\033[0m newcpp ProgramName"
+    exit 1
+fi
+
+if [ -e Makefile ]; then
+	echo "\033[31m Error:\033[0m there is another Makefile in the directory"
+	exit 1
+fi
+
+if [ ! -d srcs ]; then
+	mkdir srcs
+fi
+
+cat > Makefile << EOF
+#*******************************************************************************#
+#				COMPILER					#
+#*******************************************************************************#
+CXX		=	c++
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+
+#*******************************************************************************#
+#				SOURCES						#
+#*******************************************************************************#
+NAME		=	${NAME}
+FILES		=	\$(S)main.cpp \$(S)${NAME}.cpp
+OBJS		=	\$(FILES:\$(S)%.cpp=\$(O)%.o)
+
+#*******************************************************************************#
+#				DIRECTORIES					#
+#*******************************************************************************#
+S		=	srcs/
+O		=	objs/
+I		=	inc/
+
+#*******************************************************************************#
+#				RULES						#
+#*******************************************************************************#
+all:		\$(NAME)
+
+\$(NAME):	\$(OBJS)
+	@\$(CXX) \$(CXXFLAGS) \$(OBJS) -o \$(NAME)
+
+\$(O)%.o:	\$(S)%.cpp
+	@[ -d \$(O) ] || mkdir -p \$(O)
+	@\$(CXX) \$(CXXFLAGS) -I \$(I) -c \$< -o \$@
+
+clean:
+	@rm -rf \$(O)
+
+fclean:	clean
+	@rm -rf \$(NAME)
+
+re:	fclean all
+
+.PHONY: all clean fclean re
+EOF
+
+cat > srcs/main.cpp << EOF
+#include "${NAME}.hpp"
+
+int	main ( void )
+{
+	std::cout << "Hola Mundo!" << std::endl;
+	return 0;
+}
+EOF
+sh mkclass ${NAME}
+
+echo "C++ project ${NAME} created."
