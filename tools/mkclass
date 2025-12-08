@@ -48,29 +48,29 @@ cat > $CPP_FILE <<EOF
 #include "${NAME}.hpp"
 
 /* ****************************************************************************	*/
-/*				CONSTRUCTORS					*/
+/*								CONSTRUCTORS									*/
 /* ****************************************************************************	*/
 
 ${NAME}::${NAME} ( void ) : _data(0)
 {
-	//std::cout << "Default constructor called" << std::endl;
+	//std::cout << "\033[90mDefault constructor called\033[0m" << std::endl;
 	return ;
 }
 
 ${NAME}::${NAME} ( const ${NAME} &cpy)
 {
-	//std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "\033[90mCopy constructor called\033[0m" << std::endl;
 	this->_data = cpy._data;
 	return ;
 }
 
 /* ****************************************************************************	*/
-/*				OPERATORS					*/
+/*								OPERATORS										*/
 /* ****************************************************************************	*/
 
 ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 {
-	//std::cout << "Copy operator called" << std::endl;
+	//std::cout << "\033[90mCopy operator called\033[0m" << std::endl;
 	if (this == &rhs)
 		return *this;
 	this->_data = rhs._data;
@@ -78,21 +78,21 @@ ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 }
 
 /* ****************************************************************************	*/
-/*				DESTRUCTOR					*/
+/*								DESTRUCTOR										*/
 /* ****************************************************************************	*/
 
 ${NAME}::~${NAME} ( void )
 {
-	//std::cout << "Destructor called" << std::endl;
+	//std::cout << "\033[90mDestructor called\033[0m" << std::endl;
 	return ;
 }
 
 /* ****************************************************************************	*/
-/*				MEMBER FUNCTIONS				*/
+/*							MEMBER FUNCTIONS									*/
 /* ****************************************************************************	*/
 
 /* ****************************************************************************	*/
-/*				NON MEMBER FUNCTIONS				*/
+/*							NON MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/
 
 EOF
