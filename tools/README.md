@@ -84,6 +84,6 @@ Includes:
 ---
 
 ## Requirements
-	•	zsh or bash
-	•	Permission to create ~/.scripts
-	•	C++98-compatible environment (42 modules)
+- zsh or bash
+- Permission to create ~/.scripts
+- C++98-compatible environment (42 modules)
