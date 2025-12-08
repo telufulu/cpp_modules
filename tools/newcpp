@@ -8,7 +8,7 @@ if [ -z "$NAME" ]; then
 fi
 
 if [ -e Makefile ]; then
-	echo "\033[31m Error:\033[0m there is another Makefile in the directory"
+	echo "\033[31mError:\033[0m there is another Makefile in the directory"
 	exit 1
 fi
 
