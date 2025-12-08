@@ -5,9 +5,9 @@
 These scripts were created to streamline the creation of C++ projects and classes following the typical 42 structure.
 
 Included:
-	•	newcpp → generates a full C++ project.
-	•	mkclass → automatically creates a canonical-form C++ class.
-	•	install.sh → installer that sets up the environment.
+- newcpp → generates a full C++ project.
+- mkclass → automatically creates a canonical-form C++ class.
+- install.sh → installer that sets up the environment.
 
 ---
 
@@ -24,10 +24,10 @@ zsh install.sh
 ```
 
 By default, this will:
-	1.	Copy `newcpp` and `mkclass` into `~/.scripts/`.
-	2.	Assign execution permissions.
-	3.	Create the necessary aliases in `~/.zshrc` or `~/.bashrc`.
-	4.	Enable the commands:
+1. Copy `newcpp` and `mkclass` into `~/.scripts/`.
+2. Assign execution permissions.
+3. Create the necessary aliases in `~/.zshrc` or `~/.bashrc`.
+4. Enable the commands:
 
 ```
 newcpp
@@ -77,9 +77,9 @@ srcs/ClassName.cpp
 ```
 
 Includes:
-	•	Constructor and destructor
-	•	Full canonical form
-	•	Ready-to-implement structure
+- Constructor and destructor
+- Full canonical form
+- Ready-to-implement structure
 
 ---
 
