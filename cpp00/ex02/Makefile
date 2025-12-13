@@ -7,8 +7,8 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 #******************************************************************************#
 #								SOURCES										   #
 #******************************************************************************#
-NAME		=	Phonebook
-FILES		=	PhoneBook.cpp Contact.cpp main.cpp
+NAME		=	accountRecovery
+FILES		=	Account.cpp tests.cpp
 OBJS		=	$(FILES:%.cpp=$O%.o)
 
 #******************************************************************************#
