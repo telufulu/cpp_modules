@@ -97,7 +97,7 @@ ${NAME}::~${NAME} ( void )
 /* ****************************************************************************	*/
 std::ostream	&operator<<(std::ostream &out, const ${NAME} &obj)
 {
-	out << "This is the overload of << for the ${NAME} class" << obj.getGrade();
+	out << "This is the overload of '<<' for the ${NAME} class" << std::endl;
 	return out;
 }
 EOF
