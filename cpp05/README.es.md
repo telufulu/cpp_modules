@@ -4,9 +4,6 @@
 El objetivo de este módulo de C++ es principalmente comprender cómo funcionan las excepciones en C++ y la comunicación entre clases que contienen excepciones.
 Además, se refuerza la comprensión sobre como hacer una *Orthodox Canonical Form Class* y se obliga a plantear desde un buen diseño de una clase al poner limitaciones con variables de tipo constante.
 
-## Ejecución
-*(Explicar que hace make y como se ejecuta el programa)*
-
 ## ¿Qué hace cada ejercicio?
 ### ex00
 El objetivo es representar un burócrata con un grado siempre válido.
@@ -32,7 +29,7 @@ Se pone a prueba el comportamiento de la clase Bureaucrat. En concreto, el progr
     - Mostrar mensajes de error claros mediante what().
 - La clase impide en todo momento que un objeto exista en un estado inválido.
 
-El main actúa únicamente como entorno de prueba: provoca tanto casos válidos como inválidos para verificar que la lógica interna de la clase es robusta y coherente.
+El `main` actúa únicamente como entorno de prueba: provoca tanto casos válidos como inválidos para verificar que la lógica interna de la clase es robusta y coherente.
 
 ---
 ### ex01
