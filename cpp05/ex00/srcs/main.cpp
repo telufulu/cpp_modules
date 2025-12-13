@@ -14,8 +14,69 @@
 
 int	main ( void )
 {
-	Bureaucrat	a("María", 1);
+	Bureaucrat	*high = 0;
 
-	std::cout << a << std::endl;
+	std::cout << "\033[36mHigh exception\033[0m" << std::endl;
+	try {
+		high = new Bureaucrat("María", 160);
+	} catch (const Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	} catch (const Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	}
+	if (high)
+	{
+		std::cout << *high << std::endl;
+		delete high;
+	}
+
+	std::cout << "\033[36mLow exception\033[0m" << std::endl;
+	try {
+		Bureaucrat	low("Pablo", -4);
+		std::cout << low << std::endl;
+	} catch (const Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	} catch (const Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	}
+
+	std::cout << "\033[36mDecrement exception\033[0m" << std::endl;
+	try {
+		Bureaucrat	a("Jose", 150);
+		std::cout << a << std::endl;
+		a.decrementGrade();
+		std::cout << a << std::endl;
+	} catch (const Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	} catch (const Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	}
+
+	std::cout << "\033[36mIncrement exception\033[0m" << std::endl;
+	try {
+		Bureaucrat	b("Belén", 1);
+		std::cout << b << std::endl;
+		b.incrementGrade();
+		std::cout << b << std::endl;
+	} catch (const Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	} catch (const Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	}
+
+	std::cout << "\033[36mGood behaviour\033[0m" << std::endl;
+	Bureaucrat	*good;
+
+	try {
+		good = new Bureaucrat("Ana", 50);
+		std::cout << *good << std::endl;
+		good->incrementGrade();
+		std::cout << *good << std::endl;
+		delete good;
+	} catch (const Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	} catch (const Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
+	}
 	return 0;
 }

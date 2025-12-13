@@ -15,7 +15,7 @@
 
 # include <iostream>	// cout
 
-class Bureaucrat
+class	Bureaucrat
 {
 	public:
 		// Constructors
@@ -28,9 +28,24 @@ class Bureaucrat
 		// Member functions
 		std::string	getName( void ) const;
 		int			getGrade( void ) const;
+		void		incrementGrade( void );
+		void		decrementGrade( void );
 
 		// Destructor
 		~Bureaucrat( void );
+
+		// Anidated classes
+		class	GradeTooLowException:	public std::exception
+		{
+			public:
+				const char	*what() const throw();
+		};
+		class	GradeTooHighException:	public std::exception
+		{
+			public:
+				const char	*what() const throw();
+		};
+	
 	private:
 		Bureaucrat( void );
 		int					_grade;
