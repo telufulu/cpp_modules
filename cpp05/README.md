@@ -33,6 +33,30 @@ The `main` function acts solely as a testing environment: it triggers both valid
 
 ---
 ### ex01
+The goal of this exercise is to introduce the interaction between bureaucrats and forms, modeling the signing process under strict validation rules and controlled error handling through exceptions.
+>#### **Compilation and execution**
+From de root of the project:
+``` bash
+make
+```
+To exec:
+``` bash
+./Bureaucrat
+```
+>#### **Behaviour of the program**
+The program tests the combined behavior of the Bureaucrat and Form classes. Specifically, it demonstrates that:
+- A Form object can only be created with valid grades for signing and execution, following the same constraints as Bureaucrat.
+- The core attributes of Form (name and required grades) are constant and cannot be modified after construction.
+- A form can only change its state from “unsigned” to “signed” through the explicit action of a Bureaucrat with a sufficient grade.
+- If a bureaucrat attempts to sign a form without the required grade, the corresponding exception is thrown.
+- The signing logic is centralized in Form::beSigned(), while Bureaucrat::signForm() acts as an intermediary that manages the attempt and reports the result.
+- All exceptions derive from std::exception, which allows:
+    - Uniform exception handling.
+	- Clear error messages to be displayed via what().
+- The bidirectional relationship between Bureaucrat and Form is implemented without circular header dependencies, using forward declarations and moving the necessary #include directives to the .cpp files.
+- At no point can a form be considered signed unless an explicit grade validation by a bureaucrat has taken place.
+
+The `main` function acts solely as a testing environment: it triggers both valid and invalid scenarios to verify that the internal logic of the class is robust and consistent.
 
 ---
 ### ex02
