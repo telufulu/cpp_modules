@@ -54,13 +54,13 @@ cat > $CPP_FILE <<EOF
 
 ${NAME}::${NAME} ( void ) : _data(0)
 {
-	//std::cout << "\033[90mDefault constructor called\033[0m" << std::endl;
+	//std::cout << "\033[90mDefault ${NAME} constructor called\033[0m" << std::endl;
 	return ;
 }
 
 ${NAME}::${NAME} ( const ${NAME} &cpy)
 {
-	//std::cout << "\033[90mCopy constructor called\033[0m" << std::endl;
+	//std::cout << "\033[90mCopy ${NAME} constructor called\033[0m" << std::endl;
 	this->_data = cpy._data;
 	return ;
 }
@@ -71,7 +71,7 @@ ${NAME}::${NAME} ( const ${NAME} &cpy)
 
 ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 {
-	//std::cout << "\033[90mCopy operator called\033[0m" << std::endl;
+	//std::cout << "\033[90mCopy ${NAME} operator called\033[0m" << std::endl;
 	if (this == &rhs)
 		return *this;
 	this->_data = rhs._data;
@@ -84,7 +84,7 @@ ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 
 ${NAME}::~${NAME} ( void )
 {
-	//std::cout << "\033[90mDestructor called\033[0m" << std::endl;
+	//std::cout << "\033[90m${NAME} destructor called\033[0m" << std::endl;
 	return ;
 }
 
