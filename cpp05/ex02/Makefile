@@ -8,7 +8,8 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 #				SOURCES						#
 #*******************************************************************************#
 NAME		=	Bureaucrat
-FILES		=	$(S)main.cpp $(S)Bureaucrat.cpp $(S)AForm.cpp
+FILES		=	$(S)main.cpp $(S)Bureaucrat.cpp $(S)AForm.cpp \
+				$(S)ShrubberyCreationForm.cpp
 OBJS		=	$(FILES:$(S)%.cpp=$(O)%.o)
 
 #*******************************************************************************#

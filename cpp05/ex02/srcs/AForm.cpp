@@ -39,7 +39,6 @@ AForm::AForm ( const std::string name, const int gradeToSign,
 
 AForm::AForm ( const AForm &cpy ) :
 	_name(cpy._name),
-	_signed(cpy._signed),
 	_gradeToSign(cpy._gradeToSign),
 	_gradeToExec(cpy._gradeToExec)
 {
