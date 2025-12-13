@@ -15,6 +15,8 @@
 
 # include <iostream>	// cout
 
+class	Form;
+
 class	Bureaucrat
 {
 	public:
@@ -30,11 +32,12 @@ class	Bureaucrat
 		int			getGrade( void ) const;
 		void		incrementGrade( void );
 		void		decrementGrade( void );
+		void		signForm( Form &obj );
 
 		// Destructor
 		~Bureaucrat( void );
 
-		// Anidated classes
+		// Exception classes
 		class	GradeTooLowException:	public std::exception
 		{
 			public:

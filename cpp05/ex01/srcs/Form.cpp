@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 /* ****************************************************************************	*/
 /*								CONSTRUCTORS									*/
@@ -25,7 +26,7 @@ Form::Form ( void ) :
 	return ;
 }
 
-Form::Form ( const std::string, const int gradeToSign,
+Form::Form ( const std::string name, const int gradeToSign,
 		const int gradeToExec ) :
 	_name(name),
 	_signed(0),
@@ -36,10 +37,13 @@ Form::Form ( const std::string, const int gradeToSign,
 	return ;
 }
 
-Form::Form ( const Form &cpy)
+Form::Form ( const Form &cpy ) :
+	_name(cpy._name),
+	_signed(cpy._signed),
+	_gradeToSign(cpy._gradeToSign),
+	_gradeToExec(cpy._gradeToExec)
 {
 	std::cout << "\033[90mCopy constructor called\033[0m" << std::endl;
-	this->_signed = cpy._signed;
 	return ;
 }
 
@@ -52,7 +56,6 @@ Form	&Form::operator=( const Form  &rhs )
 	std::cout << "\033[90mCopy operator called\033[0m" << std::endl;
 	if (this == &rhs)
 		return *this;
-	this->_signed = rhs._signed;
 	return *this;
 }
 
@@ -69,8 +72,52 @@ Form::~Form ( void )
 /* ****************************************************************************	*/
 /*							MEMBER FUNCTIONS									*/
 /* ****************************************************************************	*/
+std::string	Form::getName( void ) const
+{
+	return this->_name;
+}
 
-/* ****************************************************************************	*/
-/*							NON MEMBER FUNCTIONS								*/
-/* ****************************************************************************	*/
+bool		Form::isSigned( void ) const
+{
+	return this->_signed;
+}
 
+int			Form::getSignPerm( void ) const
+{
+	return this->_gradeToSign;
+}
+
+int			Form::getExecPerm( void ) const
+{
+	return this->_gradeToExec;
+}
+
+void		Form::beSigned( Bureaucrat &obj )
+{
+	if (this->_gradeToSign < obj.getGrade())
+		throw Form::GradeTooLowException();
+	this->_signed = 1;
+}
+/* ************************************************************************** */
+/*						NON MEMBER FUNCTIONS			    				  */
+/* ************************************************************************** */
+std::ostream	&operator<<(std::ostream &out, const Form &obj)
+{
+	out << "\033[97m~ " << obj.getName() << " form status ~\033[0m" << std::endl;
+	out << "Sign permissions: " << obj.getSignPerm() << std::endl
+		<< "Exec permissions: " << obj.getExecPerm() << std::endl;
+	out << std::endl;
+	if (obj.isSigned())
+		out << "Signed ✅" << std::endl;
+	else
+		out << "Not signed ❌" << std::endl;
+	return out;
+}
+
+/* ************************************************************************** */
+/*						EXCEPTION CLASSES		 			   				  */
+/* ************************************************************************** */
+const char	*Form::GradeTooLowException::what() const throw()
+{
+	return "grade is too low";
+}

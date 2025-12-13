@@ -13,19 +13,35 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include <iostream>	// cout
+# include <iostream>		// cout
+
+class Bureaucrat;
 
 class Form
 {
 	public:
 		// Constructors
-		Form( const std::string, const int gradeToSign,
-				const int gradeToExec) const;
+		Form( const std::string _name, const int gradeToSign,
+				const int gradeToExec);
 		Form( const Form &cpy );
 
 		// Arithmetic operators
 		Form &operator=( const Form &rhs );
 
+		// Member functions
+		std::string	getName( void ) const;
+		bool		isSigned( void ) const;
+		int			getSignPerm( void ) const;
+		int			getExecPerm( void ) const;
+		void		beSigned( Bureaucrat &obj );
+		
+		// Exceptions classes
+		class	GradeTooLowException :	public std::exception
+		{
+			public:
+				const char	*what() const throw();
+		};
+		
 		// Destructor
 		~Form( void );
 
@@ -38,4 +54,5 @@ class Form
 		const int			_gradeToExec;
 };
 
+std::ostream &operator<<(std::ostream &out, const Form &obj);
 #endif

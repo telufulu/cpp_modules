@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /* ************************************************************************** */
 /*							CONSTRUCTORS									  */
@@ -94,6 +95,17 @@ void		Bureaucrat::decrementGrade( void )
 	this->_grade += 1;
 }
 
+void		Bureaucrat::signForm( Form &obj )
+{
+	try {
+		obj.beSigned(*this);
+		std::cout << this->getName() << " signed " << obj.getName() << " form ✅" 
+			<< std::endl;
+	} catch (const Form::GradeTooLowException &e) {
+		std::cerr << obj.getName() << " cannot be signed by " << this->getName()
+			<< ": \033[31m" << e.what() << "\033[0m " << std::endl;
+	}
+}
 /* ************************************************************************** */
 /*						NON MEMBER FUNCTIONS			    				  */
 /* ************************************************************************** */
@@ -108,10 +120,10 @@ std::ostream	&operator<<(std::ostream &out, const Bureaucrat &obj)
 /* ************************************************************************** */
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade too high";
+	return "grade is too high";
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade too low";
+	return "grade is too low";
 }
