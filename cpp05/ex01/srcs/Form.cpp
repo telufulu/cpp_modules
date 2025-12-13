@@ -39,7 +39,6 @@ Form::Form ( const std::string name, const int gradeToSign,
 
 Form::Form ( const Form &cpy ) :
 	_name(cpy._name),
-	_signed(cpy._signed),
 	_gradeToSign(cpy._gradeToSign),
 	_gradeToExec(cpy._gradeToExec)
 {
