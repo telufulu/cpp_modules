@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/13 22:57:17 by telufulu          #+#    #+#             */
+/*   Updated: 2025/12/13 22:57:20 by telufulu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
@@ -10,7 +22,7 @@ class ShrubberyCreationForm :	public AForm
 {
 	public:
 		// Constructors
-		ShrubberyCreationForm( void );
+		ShrubberyCreationForm( const std::string target );
 		ShrubberyCreationForm( const ShrubberyCreationForm &cpy );
 
 		// Arithmetic operators
@@ -22,8 +34,8 @@ class ShrubberyCreationForm :	public AForm
 		// Destructor
 		~ShrubberyCreationForm( void );
 	private:
+		ShrubberyCreationForm( void );
 		const std::string	_target;
 };
 
-std::ostream &operator<<(std::ostream &out, const ShrubberyCreationForm &obj);
 #endif

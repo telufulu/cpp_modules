@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/13 22:57:29 by telufulu          #+#    #+#             */
+/*   Updated: 2025/12/13 22:57:31 by telufulu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
@@ -6,6 +18,14 @@
 /* ****************************************************************************	*/
 ShrubberyCreationForm::ShrubberyCreationForm ( void ) :
 	AForm("ShrubberyCreation", 145, 137)
+{
+	std::cout << "\033[90mVoid constructor called\033[0m" << std::endl;
+	return ;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm ( const std::string target ) :
+	AForm("ShrubberyCreation", 145, 137),
+	_target(target)
 {
 	std::cout << "\033[90mDefault constructor called\033[0m" << std::endl;
 	return ;
@@ -55,9 +75,3 @@ void	ShrubberyCreationForm::execute( Bureaucrat const &executor ) const
 /* ****************************************************************************	*/
 /*							NON MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/
-std::ostream	&operator<<(std::ostream &out, const ShrubberyCreationForm &obj)
-{
-	(void)obj;
-	out << "This is the overload of '<<' for the ShrubberyCreationForm class" << std::endl;
-	return out;
-}

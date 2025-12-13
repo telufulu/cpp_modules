@@ -22,7 +22,7 @@ AForm::AForm ( void ) :
 	_gradeToSign(1),
 	_gradeToExec(1)
 {
-	//std::cout << "\033[90mVoid constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mVoid constructor called\033[0m" << std::endl;
 	return ;
 }
 
@@ -33,7 +33,7 @@ AForm::AForm ( const std::string name, const int gradeToSign,
 	_gradeToSign(gradeToSign),
 	_gradeToExec(gradeToExec)
 {
-	std::cout << "\033[90mDefault constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mDefault AForm constructor called\033[0m" << std::endl;
 	return ;
 }
 
@@ -42,7 +42,7 @@ AForm::AForm ( const AForm &cpy ) :
 	_gradeToSign(cpy._gradeToSign),
 	_gradeToExec(cpy._gradeToExec)
 {
-	std::cout << "\033[90mCopy constructor called\033[0m" << std::endl;
+	std::cout << "\033[90mCopy AForm constructor called\033[0m" << std::endl;
 	return ;
 }
 
@@ -52,7 +52,7 @@ AForm::AForm ( const AForm &cpy ) :
 
 AForm	&AForm::operator=( const AForm  &rhs )
 {
-	std::cout << "\033[90mCopy operator called\033[0m" << std::endl;
+	std::cout << "\033[90mCopy AForm operator called\033[0m" << std::endl;
 	if (this == &rhs)
 		return *this;
 	return *this;
@@ -64,7 +64,7 @@ AForm	&AForm::operator=( const AForm  &rhs )
 
 AForm::~AForm ( void )
 {
-	std::cout << "\033[90mDestructor called\033[0m" << std::endl;
+	std::cout << "\033[90mAForm destructor called\033[0m" << std::endl;
 	return ;
 }
 

@@ -16,12 +16,24 @@
 
 int	main ( void )
 {
-	std::cout << std::endl << "\033[36m###\t???\t###\033[0m"
+	std::cout << std::endl << "\033[36m###\tSimple try to sign and execute\t###\033[0m"
 		<< std::endl;	
 	try {
-		Bureaucrat	a("Daniel", 140);
+		Bureaucrat	a("Daniel", 1);
+		ShrubberyCreationForm z("Patata");
 
 		std::cout << a << std::endl;
+		std::cout << z << std::endl;
+		try {
+			a.signForm(z);
+		} catch (const ShrubberyCreationForm::GradeTooLowException &e){
+			std::cout << e.what() << std::endl;
+		}
+		try {
+			z.execute(a);
+		} catch (const ShrubberyCreationForm::GradeTooLowException &e){
+			std::cout << e.what() << std::endl;
+		}
 	} catch (const Bureaucrat::GradeTooHighException &e) {
 		std::cerr << "\033[31mError:\033[0m" << " Bureaucrat not created because "
 			<< e.what() << std::endl;
