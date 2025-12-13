@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 20:29:02 by telufulu          #+#    #+#             */
-/*   Updated: 2025/09/04 20:57:40 by telufulu         ###   ########.fr       */
+/*   Created: 2025/08/25 12:01:16 by telufulu          #+#    #+#             */
+/*   Updated: 2025/08/27 14:08:52 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
-# include <string>	//string
+# include "Contact.hpp"
+# include <string>	// string
 
-class	Weapon
+class	PhoneBook
 {
 	public:
-		Weapon( std::string type );
-		Weapon( void );
-		~Weapon( void );
+		PhoneBook( void );
+		~PhoneBook( void );
 
-		void	setType( std::string type );
-		std::string	&getType( void );
-
+		void	add( void );	//setter
+		void	search( void );	//getter
+	
 	private:
-		std::string	_type;
+		int		_index;
+		Contact	_contacts[8];
 };
 
-#endif /* WEAPON */
+#endif
