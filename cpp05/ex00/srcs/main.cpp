@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 00:10:45 by telufulu          #+#    #+#             */
-/*   Updated: 2025/12/13 17:03:06 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:53:00 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 int	main ( void )
 {
-	Bureaucrat	*high = 0;
+	std::cout << std::endl << "\033[36m###\tGood copy behaviour\t###\033[0m" << std::endl;
+	Bureaucrat x("Xavier", 30);
+	Bureaucrat y(x);
+	Bureaucrat z("Mary", 15);
+
+	std::cout << x << std::endl;
+	std::cout << y << std::endl;
+	std::cout << z << std::endl;
+	z = x;
+	std::cout << z << std::endl;
 
 	std::cout << "\033[36m###\tHigh exception\t###\033[0m" << std::endl;
+	Bureaucrat	*high = 0;
 	try {
 		high = new Bureaucrat("María", 160);
 	} catch (const Bureaucrat::GradeTooHighException &e) {
