@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 00:10:37 by telufulu          #+#    #+#             */
-/*   Updated: 2025/12/09 00:10:40 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:09:13 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ std::ostream	&operator<<(std::ostream &out, const Bureaucrat &obj)
 }
 
 /* ************************************************************************** */
-/*						ANIDATED CLASS FUNCTIONS			   				  */
+/*						EXCEPTION CLASSES		 			   				  */
 /* ************************************************************************** */
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {

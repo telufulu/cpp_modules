@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 00:10:45 by telufulu          #+#    #+#             */
-/*   Updated: 2025/12/09 00:10:47 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/12/13 17:03:06 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main ( void )
 {
 	Bureaucrat	*high = 0;
 
-	std::cout << "\033[36mHigh exception\033[0m" << std::endl;
+	std::cout << "\033[36m###\tHigh exception\t###\033[0m" << std::endl;
 	try {
 		high = new Bureaucrat("María", 160);
 	} catch (const Bureaucrat::GradeTooHighException &e) {
@@ -30,7 +30,7 @@ int	main ( void )
 		delete high;
 	}
 
-	std::cout << "\033[36mLow exception\033[0m" << std::endl;
+	std::cout << std::endl << "\033[36m###\tLow exception\t###\033[0m" << std::endl;
 	try {
 		Bureaucrat	low("Pablo", -4);
 		std::cout << low << std::endl;
@@ -40,7 +40,7 @@ int	main ( void )
 		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
 	}
 
-	std::cout << "\033[36mDecrement exception\033[0m" << std::endl;
+	std::cout << std::endl << "\033[36m###\tDecrement exception\t###\033[0m" << std::endl;
 	try {
 		Bureaucrat	a("Jose", 150);
 		std::cout << a << std::endl;
@@ -52,7 +52,7 @@ int	main ( void )
 		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
 	}
 
-	std::cout << "\033[36mIncrement exception\033[0m" << std::endl;
+	std::cout << std::endl << "\033[36m###\tIncrement exception\t###\033[0m" << std::endl;
 	try {
 		Bureaucrat	b("Belén", 1);
 		std::cout << b << std::endl;
@@ -64,7 +64,7 @@ int	main ( void )
 		std::cerr << "\033[31mError:\033[0m " << e.what() << std::endl;
 	}
 
-	std::cout << "\033[36mGood behaviour\033[0m" << std::endl;
+	std::cout << std::endl << "\033[36m###\tGood behaviour\t###\033[0m" << std::endl;
 	Bureaucrat	*good;
 
 	try {
