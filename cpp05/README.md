@@ -60,7 +60,54 @@ The `main` function acts solely as a testing environment: it triggers both valid
 
 ---
 ### ex02
+This exercise focuses on abstract classes, polymorphism, and controlled execution flow using exceptions. The goal is to design a robust hierarchy of forms where:
+
+- The base class defines the rules.
+- Concrete classes implement specific behaviors.
+
+Execution is only possible when all constraints are satisfied.
+
+>#### **Compilation and execution**
+From de root of the project:
+``` bash
+make
+```
+To exec:
+``` bash
+./Bureaucrat
+```
+>#### **Behaviour of the program**
+Creates different forms, created as childs of an AForm class:
+
+- Checks whether the form is signed.
+- Checks whether the bureaucrat has sufficient grade.
+- Throws the appropriate exception if a rule is violated.
+- Delegates the actual action to a virtual function.
+
+Each concrete form implements only its specific action. This avoids duplicated logic and guarantees that no form can be executed in an invalid state.
+
+The `main` function acts solely as a testing environment: it triggers both valid and invalid scenarios to verify that the internal logic of the class is robust and consistent.
 
 ---
 ### ex03
+This exercise introduces the Factory pattern through the Intern class. The goal is to dynamically create different concrete forms based solely on a string identifier, while returning them through a common interface.
 
+>#### **Compilation and execution**
+From de root of the project:
+``` bash
+make
+```
+To exec:
+``` bash
+./Bureaucrat
+```
+>#### **Behaviour of the program**
+The program demonstrates that:
+
+- The Intern class is capable of creating different forms using only their name.
+- The return type is always a pointer to AForm, regardless of the concrete type created.
+- The `main` is responsible for:
+    - Using the returned object.
+    - Managing its lifetime (delete).
+
+The `main` function acts solely as a testing environment: it triggers both valid and invalid scenarios to verify that the internal logic of the class is robust and consistent.

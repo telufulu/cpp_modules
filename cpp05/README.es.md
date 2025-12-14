@@ -60,7 +60,50 @@ El `main` actúa únicamente como entorno de prueba: provoca tanto casos válido
 
 ---
 ### ex02
+Este ejercicio se centra en las clases abstractas, el polimorfismo y el control del flujo de ejecución mediante excepciones. El objetivo es diseñar una jerarquía robusta de formularios en la que:
+	•	La clase base define las reglas.
+	•	Las clases concretas implementan comportamientos específicos.
+
+La ejecución solo es posible cuando todas las restricciones se cumplen.
+>#### Compilación y ejecución
+Desde la raíz del ejercicio:
+``` bash
+make
+```
+Para ejecutarlo:
+``` bash
+./Bureaucrat
+```
+>#### **Comportamiento del programa**
+Se crean distintos formularios, definidos como clases hijas de AForm:
+- Se comprueba si el formulario está firmado.
+- Se comprueba si el burócrata tiene el grado suficiente.
+- Se lanza la excepción correspondiente si alguna regla se viola.
+- Se delega la acción concreta a una función virtual.
+
+Cada formulario concreto implementa únicamente su acción específica. Esto evita la duplicación de lógica y garantiza que ningún formulario pueda ejecutarse en un estado inválido.
+
+La función `main` actúa únicamente como entorno de pruebas: provoca tanto escenarios válidos como inválidos para verificar que la lógica interna de las clases es robusta y coherente.
 
 ---
 ### ex03
+Este ejercicio introduce el patrón Factory a través de la clase Intern. El objetivo es crear dinámicamente distintos formularios concretos basándose únicamente en un identificador de tipo cadena, devolviéndolos siempre mediante una interfaz común.
 
+>#### Compilación y ejecución
+Desde la raíz del ejercicio:
+``` bash
+make
+```
+Para ejecutarlo:
+``` bash
+./Bureaucrat
+```
+>#### **Comportamiento del programa**
+El programa demuestra que:
+- La clase Intern es capaz de crear distintos formularios usando únicamente su nombre.
+- El tipo de retorno es siempre un puntero a AForm, independientemente del tipo concreto creado.
+- El `main` es responsable de:
+    - Utilizar el objeto devuelto.
+	- Gestionar su ciclo de vida (delete).
+
+La función `main` actúa únicamente como entorno de pruebas: provoca tanto escenarios válidos como inválidos para verificar que la lógica interna de las clases es robusta y coherente.
