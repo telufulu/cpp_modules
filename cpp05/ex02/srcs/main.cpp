@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main ( void )
 {
@@ -29,7 +30,7 @@ int	main ( void )
 			try {
 				a.executeForm(z);
 			} catch (const ShrubberyCreationForm::GradeTooLowException &e){
-				std::cout << "Bureucrat " << a.getName() << " cannot execute "
+				std::cout << "Bureaucrat " << a.getName() << " cannot execute "
 				<< z.getName() << " form: \033[31m" << e.what() 
 				<< "\033[0m" << std::endl;
 			} catch (const ShrubberyCreationForm::NotSignedException &e){
@@ -37,7 +38,7 @@ int	main ( void )
 				<< e.what() << "\033[0m" << std::endl;
 			}
 		} catch (const ShrubberyCreationForm::GradeTooLowException &e){
-			std::cout << "Bureucrat " << a.getName() << " cannot sign "
+			std::cout << "Bureaucrat " << a.getName() << " cannot sign "
 			<< z.getName() << " form: \033[31m" << e.what() 
 			<< "\033[0m" << std::endl;
 		}
@@ -61,12 +62,12 @@ int	main ( void )
 			try {
 				b.executeForm(x);
 			} catch (const std::exception &e){
-				std::cout << "Bureucrat " << b.getName() << " cannot execute "
+				std::cout << "Bureaucrat " << b.getName() << " cannot execute "
 				<< x.getName() << " form: \033[31m" << e.what() 
 				<< "\033[0m" << std::endl;
 			}
 		} catch (const RobotomyRequestForm::GradeTooLowException &e){
-			std::cout << "Bureucrat " << b.getName() << " cannot sign "
+			std::cout << "Bureaucrat " << b.getName() << " cannot sign "
 			<< x.getName() << " form: \033[31m" << e.what() 
 			<< "\033[0m" << std::endl;
 		}
@@ -80,10 +81,38 @@ int	main ( void )
 
 	std::cout << std::endl << "\033[36m###\tPresidential Pardon Form\t###\033[0m" << std::endl;
 	try {
-		Bureaucrat c("Irene", 30);
-		PresidentialPardonForm	y("Boniato");
+		Bureaucrat				c("Rachel", 5);
+		PresidentialPardonForm	y("Madrid");
 
-		std::cout << b << std::endl;
+		std::cout << c << std::endl;
+		try {
+			c.signForm(y);
+		} catch (const std::exception &e) {
+			std::cout << "Bureaucrat " << c.getName() << " cannot sign "
+			<< y.getName() << " form: \033[31m" << e.what() 
+			<< "\033[0m" << std::endl;
+		}
+		try {
+			c.executeForm(y);
+		} catch (const std::exception &e) {
+			std::cout << "Bureaucrat " << c.getName() << " cannot execute "
+			<< y.getName() << " form: \033[31m" << e.what() 
+			<< "\033[0m" << std::endl;
+		}
+		try {
+			c.decrementGrade();
+		} catch (const std::exception &e) {
+			std::cout << "Is not possible to change " << c.getName() <<
+			"'s grade. Reason: " << e.what() << std::endl;
+		}
+		try {
+			c.executeForm(y);
+		} catch (const std::exception &e) {
+			std::cout << "Bureaucrat " << c.getName() << " cannot execute "
+			<< y.getName() << " form: \033[31m" << e.what() 
+			<< "\033[0m" << std::endl;
+		}
 	} catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+}
