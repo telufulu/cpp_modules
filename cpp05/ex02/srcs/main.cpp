@@ -13,9 +13,11 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main ( void )
 {
+	std::cout << std::endl << "\033[36m###\tSchubbery form\t###\033[0m" << std::endl;
 	try {
 		Bureaucrat	a("Daniel", 14);
 		ShrubberyCreationForm z("Patata");
@@ -37,6 +39,35 @@ int	main ( void )
 		} catch (const ShrubberyCreationForm::GradeTooLowException &e){
 			std::cout << "Bureucrat " << a.getName() << " cannot sign "
 			<< z.getName() << " form: \033[31m" << e.what() 
+			<< "\033[0m" << std::endl;
+		}
+	} catch (const Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "\033[31mError:\033[0m" << " Bureaucrat not created because "
+			<< e.what() << std::endl;
+	} catch (const Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "\033[31mError:\033[0m" << " Bureaucrat not created because "
+			<< e.what() << std::endl;
+	}
+
+	std::cout << std::endl << "\033[36m###\tRobotomy form\t###\033[0m" << std::endl;
+	try {
+		Bureaucrat b("Irene", 30);
+		RobotomyRequestForm	x("Boniato");
+
+		std::cout << b << std::endl;
+		try {
+			x.beSigned(b);
+			std::cout << x << std::endl;
+			try {
+				b.executeForm(x);
+			} catch (const std::exception &e){
+				std::cout << "Bureucrat " << b.getName() << " cannot execute "
+				<< x.getName() << " form: \033[31m" << e.what() 
+				<< "\033[0m" << std::endl;
+			}
+		} catch (const RobotomyRequestForm::GradeTooLowException &e){
+			std::cout << "Bureucrat " << b.getName() << " cannot sign "
+			<< x.getName() << " form: \033[31m" << e.what() 
 			<< "\033[0m" << std::endl;
 		}
 	} catch (const Bureaucrat::GradeTooHighException &e) {
