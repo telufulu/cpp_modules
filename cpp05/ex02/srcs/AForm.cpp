@@ -97,6 +97,15 @@ void		AForm::beSigned( Bureaucrat &obj )
 		throw AForm::GradeTooLowException();
 	this->_signed = 1;
 }
+
+void		AForm::execute( Bureaucrat const &executor ) const
+{
+	if (executor.getGrade() > this->getExecPerm())
+		throw AForm::GradeTooLowException();
+	else if (!this->isSigned())
+		throw AForm::NotSignedException();
+	this->formExecution(executor);
+}
 /* ************************************************************************** */
 /*						NON MEMBER FUNCTIONS			    				  */
 /* ************************************************************************** */
@@ -119,4 +128,9 @@ std::ostream	&operator<<(std::ostream &out, const AForm &obj)
 const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return "grade is too low";
+}
+
+const char	*AForm::NotSignedException::what() const throw()
+{
+	return "is not signed";
 }

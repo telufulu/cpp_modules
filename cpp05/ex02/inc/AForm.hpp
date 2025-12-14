@@ -34,10 +34,16 @@ class AForm
 		int				getSignPerm( void ) const;
 		int				getExecPerm( void ) const;
 		void			beSigned( Bureaucrat &obj );
-		virtual void	execute( Bureaucrat const &executor) const = 0;
-		
+		void			execute( Bureaucrat const &executor) const;
+		virtual	void	formExecution( Bureaucrat const &executor ) const = 0;
+	
 		// Exceptions classes
 		class	GradeTooLowException :	public std::exception
+		{
+			public:
+				const char	*what() const throw();
+		};
+		class	NotSignedException :	public std::exception
 		{
 			public:
 				const char	*what() const throw();

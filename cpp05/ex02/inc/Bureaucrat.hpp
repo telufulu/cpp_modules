@@ -33,6 +33,7 @@ class	Bureaucrat
 		void		incrementGrade( void );
 		void		decrementGrade( void );
 		void		signForm( AForm &obj );
+		void		executeForm(AForm const &form);
 
 		// Destructor
 		~Bureaucrat( void );

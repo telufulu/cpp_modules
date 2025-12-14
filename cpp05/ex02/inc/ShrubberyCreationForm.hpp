@@ -29,7 +29,7 @@ class ShrubberyCreationForm :	public AForm
 		ShrubberyCreationForm &operator=( const ShrubberyCreationForm &rhs );
 
 		// Member functions
-		void	execute( Bureaucrat const &executor) const;
+		void	formExecution( Bureaucrat const &executor) const;
 
 		// Destructor
 		~ShrubberyCreationForm( void );

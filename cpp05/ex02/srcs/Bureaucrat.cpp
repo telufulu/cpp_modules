@@ -106,6 +106,12 @@ void		Bureaucrat::signForm( AForm &obj )
 			<< ": \033[31m" << e.what() << "\033[0m " << std::endl;
 	}
 }
+
+void		Bureaucrat::executeForm(AForm const &form)
+{
+	form.execute(*this);
+	std::cout << form.getName() << " executed " << form.getName() << std::endl;
+}
 /* ************************************************************************** */
 /*						NON MEMBER FUNCTIONS			    				  */
 /* ************************************************************************** */

@@ -12,6 +12,7 @@
 
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
+#include <fstream>						// ofstream
 
 /* ****************************************************************************	*/
 /*								CONSTRUCTORS									*/
@@ -63,13 +64,28 @@ ShrubberyCreationForm::~ShrubberyCreationForm ( void )
 /* ****************************************************************************	*/
 /*							MEMBER FUNCTIONS									*/
 /* ****************************************************************************	*/
-void	ShrubberyCreationForm::execute( Bureaucrat const &executor ) const
+void	ShrubberyCreationForm::formExecution( Bureaucrat const &executor ) const
 {
-	if (executor.getGrade() > this->getExecPerm())
-		throw AForm::GradeTooLowException();
-	std::cout << "VAS BIEN" << std::endl;
-	// Prints a tree of ASCII characters
-	(void)executor;
+	std::ofstream file(this->_target + "_schubbery");
+
+	file << std::endl << "            /*\\" << std::endl
+	<< "           /***\\" << std::endl
+	<< "          /*o*o*\\" << std::endl
+	<< "         /***o***\\" << std::endl
+	<< "        /*o*****o*\\" << std::endl
+	<< "       /***o**o****\\" << std::endl
+	<< "      /*o*********o*\\" << std::endl
+	<< "     /***o****o******\\" << std::endl
+	<< "    /*o*************o*\\" << std::endl
+	<< "   /***o********o******\\" << std::endl
+	<< "  /*o******o**********o*\\" << std::endl
+	<< " /***o*****o*****o*******\\" << std::endl
+	<< "/*o*********************o*\\" << std::endl
+	<< "           |||" << std::endl
+	<< "           |||" << std::endl
+	<< "         __|||__" << std::endl
+	<< "        [_______]" << std::endl;
+	std::cout << executor.getName() << " schubberies a tree in " << this->_target << std::endl;
 }
 
 /* ****************************************************************************	*/

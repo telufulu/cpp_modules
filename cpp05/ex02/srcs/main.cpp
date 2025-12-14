@@ -16,23 +16,28 @@
 
 int	main ( void )
 {
-	std::cout << std::endl << "\033[36m###\tSimple try to sign and execute\t###\033[0m"
-		<< std::endl;	
 	try {
-		Bureaucrat	a("Daniel", 1);
+		Bureaucrat	a("Daniel", 14);
 		ShrubberyCreationForm z("Patata");
 
 		std::cout << a << std::endl;
-		std::cout << z << std::endl;
 		try {
-			a.signForm(z);
+			z.beSigned(a);
+			std::cout << z << std::endl;
+			try {
+				a.executeForm(z);
+			} catch (const ShrubberyCreationForm::GradeTooLowException &e){
+				std::cout << "Bureucrat " << a.getName() << " cannot execute "
+				<< z.getName() << " form: \033[31m" << e.what() 
+				<< "\033[0m" << std::endl;
+			} catch (const ShrubberyCreationForm::NotSignedException &e){
+				std::cout << z.getName() << " cannot be executed: \033[31m" 
+				<< e.what() << "\033[0m" << std::endl;
+			}
 		} catch (const ShrubberyCreationForm::GradeTooLowException &e){
-			std::cout << e.what() << std::endl;
-		}
-		try {
-			z.execute(a);
-		} catch (const ShrubberyCreationForm::GradeTooLowException &e){
-			std::cout << e.what() << std::endl;
+			std::cout << "Bureucrat " << a.getName() << " cannot sign "
+			<< z.getName() << " form: \033[31m" << e.what() 
+			<< "\033[0m" << std::endl;
 		}
 	} catch (const Bureaucrat::GradeTooHighException &e) {
 		std::cerr << "\033[31mError:\033[0m" << " Bureaucrat not created because "
