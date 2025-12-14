@@ -77,5 +77,13 @@ int	main ( void )
 		std::cerr << "\033[31mError:\033[0m" << " Bureaucrat not created because "
 			<< e.what() << std::endl;
 	}
-	return 0;
-}
+
+	std::cout << std::endl << "\033[36m###\tPresidential Pardon Form\t###\033[0m" << std::endl;
+	try {
+		Bureaucrat c("Irene", 30);
+		PresidentialPardonForm	y("Boniato");
+
+		std::cout << b << std::endl;
+	} catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
