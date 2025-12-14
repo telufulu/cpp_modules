@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 22:57:29 by telufulu          #+#    #+#             */
-/*   Updated: 2025/12/13 22:57:31 by telufulu         ###   ########.fr       */
+/*   Updated: 2025/12/14 17:59:49 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm ( void )
 /* ****************************************************************************	*/
 void	ShrubberyCreationForm::formExecution( Bureaucrat const &executor ) const
 {
-	std::ofstream file(this->_target + "_schubbery");
+	std::string		fileName = this->_target + "_shrubbery";
+	std::ofstream	file(fileName.c_str());
 
 	file << std::endl << "            /*\\" << std::endl
 	<< "           /***\\" << std::endl
