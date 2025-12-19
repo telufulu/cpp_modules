@@ -40,6 +40,8 @@ Try to execute:
 
   newcpp <projectName>
   mkclass <className>
+
+⚠️ Reboot your terminal
 EOF
 
 source ${RC_FILE}

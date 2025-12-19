@@ -41,6 +41,7 @@ class ${NAME}
 		int	_data;
 };
 
+std::ostream &operator<<(std::ostream &out, const ${NAME} &obj);
 #endif
 EOF
 
@@ -48,29 +49,29 @@ cat > $CPP_FILE <<EOF
 #include "${NAME}.hpp"
 
 /* ****************************************************************************	*/
-/*				CONSTRUCTORS					*/
+/*								CONSTRUCTORS									*/
 /* ****************************************************************************	*/
 
 ${NAME}::${NAME} ( void ) : _data(0)
 {
-	//std::cout << "Default constructor called" << std::endl;
+	//std::cout << "\033[90mDefault ${NAME} constructor called\033[0m" << std::endl;
 	return ;
 }
 
 ${NAME}::${NAME} ( const ${NAME} &cpy)
 {
-	//std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "\033[90mCopy ${NAME} constructor called\033[0m" << std::endl;
 	this->_data = cpy._data;
 	return ;
 }
 
 /* ****************************************************************************	*/
-/*				OPERATORS					*/
+/*								OPERATORS										*/
 /* ****************************************************************************	*/
 
 ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 {
-	//std::cout << "Copy operator called" << std::endl;
+	//std::cout << "\033[90mCopy ${NAME} operator called\033[0m" << std::endl;
 	if (this == &rhs)
 		return *this;
 	this->_data = rhs._data;
@@ -78,23 +79,27 @@ ${NAME}	&${NAME}::operator=( const ${NAME}  &rhs )
 }
 
 /* ****************************************************************************	*/
-/*				DESTRUCTOR					*/
+/*								DESTRUCTOR										*/
 /* ****************************************************************************	*/
 
 ${NAME}::~${NAME} ( void )
 {
-	//std::cout << "Destructor called" << std::endl;
+	//std::cout << "\033[90m${NAME} destructor called\033[0m" << std::endl;
 	return ;
 }
 
 /* ****************************************************************************	*/
-/*				MEMBER FUNCTIONS				*/
+/*							MEMBER FUNCTIONS									*/
 /* ****************************************************************************	*/
 
 /* ****************************************************************************	*/
-/*				NON MEMBER FUNCTIONS				*/
+/*							NON MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/
-
+std::ostream	&operator<<(std::ostream &out, const ${NAME} &obj)
+{
+	out << "This is the overload of '<<' for the ${NAME} class" << std::endl;
+	return out;
+}
 EOF
 
 echo "Class ${NAME} created."
