@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:24:06 by telufulu          #+#    #+#             */
-/*   Updated: 2026/01/13 21:49:56 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/01/26 20:29:43 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string>
 #include <cstdlib>
 #include <limits>
+#include <cmath>
 
 /* ************************************************************************* */
 /*								CONSTRUCTORS								 */
@@ -59,24 +60,24 @@ ScalarConverter::~ScalarConverter ( void )
 /* ************************************************************************ */
 void	ScalarConverter::convert( const char *literal )
 {
-	char	*end;
-
 	try {
 		std::cout << "char: ";
-		ScalarConverter::_parseChar(std::strtol(literal, &end, 10));
-	} catch (ScalarConverter::NonDisplayableException &e){
-		std::cout << e.what() << std::endl;
-	} catch (ScalarConverter::ImpossibleException &e){
+		ScalarConverter::_parseChar(literal);
+	} catch (const std::exception &e) { 
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
 		std::cout << "int: ";
-		long res = std::strtol(literal, &end, 10);
-		ScalarConverter::_parseInt(res);
-	} catch (ScalarConverter::NonDisplayableException &e){
+		ScalarConverter::_parseInt(literal);
+	} catch (const std::exception &e) { 
 		std::cout << e.what() << std::endl;
-	} catch (ScalarConverter::ImpossibleException &e){
+	}
+
+	try {
+		std::cout << "float: ";
+		ScalarConverter::_parseFloat(literal);
+	} catch (const std::exception &e) { 
 		std::cout << e.what() << std::endl;
 	}
 }
@@ -84,22 +85,44 @@ void	ScalarConverter::convert( const char *literal )
 /* ************************************************************************* */
 /*							HELPER FUNCTIONS								 */
 /* ************************************************************************* */
-void	ScalarConverter::_parseChar(long literal)
+void	ScalarConverter::_parseChar(const char *literal)
 {
-	if (literal < std::numeric_limits<char>::min() || 
-			literal > std::numeric_limits<char>::max())
+	long	lit;
+	char	*end;
+
+	lit = std::strtol(literal, &end, 10);
+	if (!lit && !isdigit(static_cast<unsigned char>(*literal)))
+		lit = *literal;
+	if (lit < std::numeric_limits<char>::min() || 
+			lit > std::numeric_limits<char>::max())
 		throw ScalarConverter::ImpossibleException();
-	if (literal < 32 || literal > 126)
+	if (lit < 32 || lit > 126)
 		throw ScalarConverter::NonDisplayableException();
-	std::cout << (char)literal << std::endl;
+	std::cout << (char)lit << std::endl;
 }
 
-void	ScalarConverter::_parseInt(long literal)
+void	ScalarConverter::_parseInt(const char *literal)
 {
-	if (literal < std::numeric_limits<int>::min() || 
-			literal > std::numeric_limits<int>::max())
+	char	*end;
+	long	lit;
+	
+	lit = std::strtol(literal, &end, 10);
+	if (lit < std::numeric_limits<int>::min() || 
+			lit > std::numeric_limits<int>::max())
 		throw ScalarConverter::ImpossibleException();
-	std::cout << literal << std::endl;
+	std::cout << lit << std::endl;
+}
+
+void	ScalarConverter::_parseFloat(const char *literal)
+{
+	long double	lit;
+	char	*end;
+
+	lit = strtod(literal, &end);
+	if (lit < std::numeric_limits<double>::min() || 
+			lit > std::numeric_limits<double>::max())
+		throw ScalarConverter::ImpossibleException();
+	std::cout << lit << std::endl;
 }
 
 /* ************************************************************************* */

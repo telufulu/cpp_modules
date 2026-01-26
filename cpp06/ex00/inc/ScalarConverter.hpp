@@ -6,7 +6,7 @@
 /*   By: telufulu <@student.42madrid.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 11:24:00 by telufulu          #+#    #+#             */
-/*   Updated: 2026/01/13 21:42:07 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/01/26 20:29:46 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ class ScalarConverter
 
 		// Exception classes
 		class	ImpossibleException :	public std::exception
-	{
-		public:
-			const char	*what() const throw();
-	};
+		{
+			public:
+				const char	*what() const throw();
+		};
 		class	NonDisplayableException :	public std::exception
-	{
-		public:
-			const char	*what() const throw();
-	};
+		{
+			public:
+				const char	*what() const throw();
+		};
 		// Destructor
 		~ScalarConverter( void );
 
@@ -45,8 +45,9 @@ class ScalarConverter
 		ScalarConverter( const ScalarConverter &cpy );
 
 		// Helpers
-		static void	_parseChar(long literal);
-		static void	_parseInt(long literal);
+		static void	_parseChar(const char *literal);
+		static void	_parseInt(const char *literal);
+		static void _parseFloat(const char *literal);
 };
 
 std::ostream &operator<<(std::ostream &out, const ScalarConverter &obj);
