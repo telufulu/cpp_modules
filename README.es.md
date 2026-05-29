@@ -90,3 +90,14 @@ Los ejercicios se centran en diseñar jerarquías de clases flexibles, combinand
 | **ex03** | *Materia* | Implementación de un pequeño sistema inspirado en los RPG, con `AMateria`, `ICharacter`, `Character` y `MateriaSource`, aplicando polimorfismo e interacción entre interfaces. |
 
 ---
+
+## CPP05 — Repetition and Exceptions
+
+Este módulo introduce el manejo estructurado de excepciones en C++. Aprenderás a validar estados, lanzar errores personalizados y diseñar clases que reaccionen correctamente ante condiciones inválidas, ampliando progresivamente la arquitectura creada en ejercicios anteriores.
+
+| Ejercicio | Título | Descripción |
+|------------|---------|-------------|
+| **ex00** | *Mommy, when I grow up, I want to be a bureaucrat!* | Implementación de la clase Bureaucrat, con nombre constante, validación estricta del rango de grado (1–150), excepciones personalizadas y sobrecarga del operador <<. |
+| **ex01** | *Form up, maggots!* | Creación de la clase Form, con atributos constantes, control de firma mediante Bureaucrat y excepciones al validar grados. Incluye sobrecarga del operador << y la función beSigned(). |
+| **ex02** | *No, you need form 28B, not 28C…* | Conversión de Form en la clase abstracta AForm, de la que derivan ShrubberyCreationForm, RobotomyRequestForm y PresidentialPardonForm. Se añade el flujo de ejecución de formularios y la validación de permisos antes de ejecutar. |
+| **ex03** | *At least this beats coffee-making* |	Implementación de la clase Intern, capaz de crear dinámicamente formularios mediante makeForm(). Se descartan estructuras poco legibles y se exige un método claro para mapear nombres de formularios con sus clases correspondientes. |

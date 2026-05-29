@@ -30,3 +30,6 @@ objs/
 .vscode/
 .idea/
 *.code-workspace
+
+# Others
+*_schubbery
