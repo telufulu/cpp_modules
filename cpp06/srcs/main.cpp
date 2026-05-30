@@ -14,8 +14,5 @@
 
 int	main ( int argc, char **argv )
 {
-	if ( argc == 2 && argv )
-		//ScalarConverter	a;	// This might throw an error at compiling
-		ScalarConverter::convert(argv[1]);
 	return 0;
 }
