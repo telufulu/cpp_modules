@@ -1,47 +1,31 @@
 #!/bin/sh
 
-GREEN="\033[1;32m"
-RESET="\033[0m"
-
 SCRIPT_DIR=$1
 INSTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-if [[ "$SHELL" == *"zsh" ]]; then
-    RC_FILE="$HOME/.zshrc"
-elif [[ "$SHELL" == *"bash" ]]; then
-    RC_FILE="$HOME/.bashrc"
-else
-    echo "Shell no soportada"
-    exit 1
-fi
-
+# Default path /usr/local/scripts.
 if [ -z "$SCRIPT_DIR" ]; then
-	SCRIPT_DIR=~/.scripts
-fi
-if [ ! -d ${SCRIPT_DIR} ]; then
-	mkdir ${SCRIPT_DIR}
+    SCRIPT_DIR=/usr/local/scripts
 fi
 
-cp ${INSTALL_DIR}/newcpp ${SCRIPT_DIR}
-cp ${INSTALL_DIR}/mkclass ${SCRIPT_DIR}
+# Creates the directory if it doesn't exists (sudo is required)
+if [ ! -d "${SCRIPT_DIR}" ]; then
+    sudo mkdir -p "${SCRIPT_DIR}"
+fi
 
-echo "" >> ${RC_FILE}
-echo "#SCRIPTS ALIAS" >> ${RC_FILE}
-echo "alias newcpp=\"sh ${SCRIPT_DIR}/newcpp\"" >> ${RC_FILE}
-echo "alias mkclass=\"sh ${SCRIPT_DIR}/mkclass\"" >> ${RC_FILE}
+sudo cp "${INSTALL_DIR}/newcpp"  "${SCRIPT_DIR}/"
+sudo cp "${INSTALL_DIR}/mkclass" "${SCRIPT_DIR}/"
+sudo chmod +x "${SCRIPT_DIR}/newcpp" "${SCRIPT_DIR}/mkclass"
 
 cat << EOF
 ✔️ Instalation complete
 
 Scripts were installed at:
-  ${HOME}/.scripts/
+${SCRIPT_DIR}/
 
 Try to execute:
 
-  newcpp <projectName>
-  mkclass <className>
+newcpp <projectName>
+mkclass <className>
 
-⚠️ Reboot your terminal
 EOF
-
-source ${RC_FILE}
