@@ -1,23 +1,36 @@
 #ifndef WHATEVER_HPP
 # define WHATEVER_HPP
 
-# include <iostream>				// ostream
+	template <typename T>
+	void swap( T &a, T &b )
+	{
+		// Swaps the values of two given parameters. Does not return anything
+		T	aux = a;
 
-class Whatever
-{
-	public:
-		// Constructors
-		Whatever( void );
-		Whatever( const Whatever &cpy );
+		a = b;
+		b = aux;
+	}
 
-		// Arithmetic operators
-		Whatever &operator=( const Whatever &rhs );
+	template <typename T>
+	T	min( T &a, T &b )
+	{
+		// Compares the two values passed as parameters and returns the smallest one.
+		// If they are equal, it returns the second one
+		if (a == b || a > b)
+			return (b);
+		else
+			return (a);
+	}
 
-		// Destructor
-		~Whatever( void );
-	private:
-		int	_data;
-};
+	template <typename T>
+	T	max( T &a, T &b )
+	{
+		// Compares the two values passed as parameters and returns the greatest one.
+		// If they are equal, it returns the second one.
+		if (a == b || a < b)
+			return (b);
+		else
+			return (a);
+	}
 
-std::ostream &operator<<(std::ostream &out, const Whatever &obj);
 #endif

@@ -8,7 +8,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 #				SOURCES						#
 #*******************************************************************************#
 NAME		=	Whatever
-FILES		=	$(S)main.cpp $(S)Whatever.cpp
+FILES		=	$(S)main.cpp
 OBJS		=	$(FILES:$(S)%.cpp=$(O)%.o)
 
 #*******************************************************************************#
