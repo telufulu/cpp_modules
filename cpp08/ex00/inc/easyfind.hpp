@@ -13,23 +13,18 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
+# include <algorithm>		// iterator
+# include <stdexcept>		// runtime_error
+
 template <typename T>
-class easyfind
+typename T::iterator	easyfind( T &cont, int i )
 {
-	public:
-		// Constructors
-		easyfind( void );
-		easyfind( const easyfind &cpy );
-
-		// Arithmetic operators
-		easyfind &operator=( const easyfind &rhs );
-
-		// Destructor
-		~easyfind( void );
-
-		// Member functios
-		T::iterator			*easyfind( T &cont, int i );
-		T::const_iterator	*easyfind( T &cont, int i );
-};
+	typename T::iterator	it;
+	
+	it = std::find(cont.begin(), cont.end(), i);
+	if (it == cont.end())
+		throw std::runtime_error("not found");
+	return it;
+}
 
 #endif

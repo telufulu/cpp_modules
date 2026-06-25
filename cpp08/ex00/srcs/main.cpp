@@ -11,9 +11,22 @@
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
+#include <vector>
+#include <iostream>
 
-int	main ( void )
+int	main ( int argc, char **argv )
 {
-	std::cout << "Hola Mundo!" << std::endl;
+	std::vector<int> v;
+	(void)argc;
+
+	v.push_back(42);
+	try
+	{
+		easyfind(v, static_cast<int>(*argv[1]));
+		std::cout << "Finded!" << std::endl;
+	} catch (...)
+	{
+		std::cout << "Not found" << std::endl;
+	};
 	return 0;
 }
