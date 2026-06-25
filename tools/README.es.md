@@ -1,93 +1,85 @@
-> [🇬🇧 See in english](./README.md)
+> [🇬🇧 View in english](./README.md)
 
 # CPP Scripts Toolkit
 
-Estos scripts se han creado para agilizar la creación de proyectos y clases en C++ siguiendo la estructura típica de 42.
+Estos scripts se crearon para agilizar la creación de proyectos y clases en C++ siguiendo la estructura típica de 42.
 
 Incluye:
-
-* `newcpp` → creación de proyectos C++.
-* `mkclass` → generación automática de clases en formato canónico.
-* `install.sh` → instalador que configura todo el entorno.
+- `newcpp` → genera un proyecto C++ completo.
+- `mkclass` → crea automáticamente una clase C++ con forma canónica.
+- `install.sh` → instalador que copia los scripts en la carpeta del sistema.
 
 ---
 
 ## Instalación
 
-Desde la carpeta donde está este README ejecuta:
+Desde la carpeta en la que se encuentra este README, ejecuta:
 
-```bash
-sh install.sh
-```
-o
-```zsh
-zsh install.sh
-```
+    sh install.sh
 
-Por defecto, esto realizará:
+Por defecto, esto hará:
+1. Copiar `newcpp` y `mkclass` en `/usr/local/scripts`.
+2. Dar permisos de ejecución a ambos scripts.
 
-1. Copia de `newcpp` y `mkclass` a `~/.scripts/`.
-2. Asignación de permisos de ejecución.
-3. Creación de alias en `~/.zshrc` o `~/.bashrc`.
-4. Activación de los comandos:
+> ⚠️ El instalador usa `sudo` para escribir en `/usr/local/scripts`, así que puede pedirte la contraseña.
 
-```
-newcpp
-mkclass
-```
+### Añadir `/usr/local/scripts` a tu `PATH` (configuración única)
 
-Para recargar la shell:
+`/usr/local/scripts` **no** está en tu `PATH` por defecto, así que la shell no encontrará `newcpp` ni `mkclass` si los llamas por su nombre. Para arreglarlo de forma permanente, añade el directorio al archivo de configuración de tu shell:
 
-```bash
-source ~/.zshrc
-```
+**zsh** (la opción por defecto en macOS y en la mayoría de equipos de 42):
+
+    echo 'export PATH="$PATH:/usr/local/scripts"' >> ~/.zshrc
+    source ~/.zshrc
+
+**bash**:
+
+    echo 'export PATH="$PATH:/usr/local/scripts"' >> ~/.bashrc
+    source ~/.bashrc
+
+Verifica que ha funcionado:
+
+    which newcpp
+    which mkclass
+
+Ambos comandos deberían imprimir una ruta dentro de `/usr/local/scripts/`.
 
 ---
 
 ## Uso
 
-### **1. Crear un nuevo proyecto C++**
+### 1. Crear un nuevo proyecto C++
 
-```bash
-newcpp NombreProyecto
-```
+    newcpp NombreProyecto
 
 Estructura generada:
 
-```
-NombreProyecto/
- ├─ inc/
- │   └─ NombreProyecto.hpp
- ├─ srcs/
- │   └─ main.cpp
- ├─ Makefile
-```
+    NombreProyecto/
+    ├─ inc/
+    │  └─ NombreProyecto.hpp
+    ├─ srcs/
+    │  └─ main.cpp
+    ├─ Makefile
 
 ---
 
-### **2. Crear una nueva clase**
+### 2. Crear una nueva clase
 
-```bash
-mkclass NombreClase
-```
+    mkclass NombreClase
 
-Se generarán:
+Esto generará:
 
-```
-inc/NombreClase.hpp
-srcs/NombreClase.cpp
-```
+    inc/NombreClase.hpp
+    srcs/NombreClase.cpp
 
 Incluye:
-
-* Constructor y destructor
-* Forma canónica completa
-* Estructura lista para implementar
+- Constructor y destructor
+- Forma canónica completa
+- Estructura lista para implementar
 
 ---
 
 ## Requisitos
-
-* zsh o bash
-* Permisos para crear ~/.scripts
-* Entorno compatible con C++98 (módulos 42)
+- `zsh` o `bash`
+- Permiso para escribir en `/usr/local/scripts` (el instalador usa `sudo`)
+- Entorno compatible con C++98 (módulos de 42)
