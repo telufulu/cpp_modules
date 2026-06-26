@@ -16,21 +16,23 @@
 
 int	main ( int argc, char **argv )
 {
-	(void)argc;
-	unsigned int	size;
-	unsigned int	def_size = 42;
+	unsigned long	def_size = 42;
 
 	if (argc == 1)
 		return 1;
-	if (argc == 3)
-		def_size = std::atoi(argv[2]);
+	if (argc == 2)
+		def_size = std::atol(argv[1]);
+	if (def_size > std::numeric_limits<unsigned int>::max())
+	{
+		std::cout << "\033[31mError:\033[0m that number is too big" << std::endl;
+		return 1;
+	}
+	
 	Span	a(def_size);
-	size = std::atoi(argv[1]);
 	try
 	{
 		std::cout << "TEST 1" << std::endl;
-		for (unsigned int i = 0; i < size; ++i)
-			a.addNumber(i);
+		a.fillSpan();
 		std::cout << a << std::endl;
 	} catch ( const std::exception &e )
 	{

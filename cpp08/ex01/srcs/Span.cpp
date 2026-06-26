@@ -129,6 +129,13 @@ unsigned int	Span::longestSpan( void ) const
 	return max - min;
 }
 
+void	Span::fillSpan( void )
+{
+	if (!_size)
+		throw std::length_error("container is full");
+	for (unsigned int i = 0; i < _size; ++i)
+		addNumber(i);
+}
 /* ****************************************************************************	*/
 /*							NON MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/
