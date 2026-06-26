@@ -37,7 +37,7 @@ class Span
 		unsigned int	shortestSpan( void ) const;
 		unsigned int	longestSpan( void ) const;
 		void			fillSpan( void );
-
+		void			addRange();
 	private:
 		// Constructors
 		Span( void );

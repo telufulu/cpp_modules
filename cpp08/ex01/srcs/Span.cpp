@@ -73,7 +73,7 @@ unsigned int	Span::getNum( unsigned int pos ) const
 
 unsigned int	Span::getSize( void ) const
 {
-	return _size;
+	return _span.size();
 }
 
 /* ****************************************************************************	*/
@@ -136,6 +136,15 @@ void	Span::fillSpan( void )
 	for (unsigned int i = 0; i < _size; ++i)
 		addNumber(i);
 }
+
+void	Span::addRange( void )
+{
+	unsigned int				x[] = {100, 150, 200, 23, 1234, 1};
+	std::vector<unsigned int>	range(x, x + 4);
+
+	_span = range;
+}
+
 /* ****************************************************************************	*/
 /*							NON MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/

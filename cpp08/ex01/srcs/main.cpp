@@ -67,5 +67,17 @@ int	main ( int argc, char **argv )
 	{
 		std::cout << "\033[31mError: \033[0m" << e.what() << std::endl;
 	}
+	std::cout << std::endl;
+	try
+	{
+		std::cout << "TEST 4" << std::endl;
+		Span	d(def_size);
+
+		d.addRange();
+		std::cout << d << std::endl;
+	} catch ( const std::exception &e )
+	{
+		std::cout << "\033[31mError: \033[0m" << e.what() << std::endl;
+	}
 	return 0;
 }
