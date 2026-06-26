@@ -19,8 +19,10 @@
 
 int	main ( int argc, char **argv )
 {
-	std::vector<int>	v;
-	long				n;
+	std::vector<int>		v;
+	long					n;
+	const int				x[] = {100, 150, 200};
+	const std::vector<int>	b(x, x + 2);
 
 	v.push_back(42);
 	v.push_back(21);
@@ -46,6 +48,16 @@ int	main ( int argc, char **argv )
 	{
 		std::cout << "TEST 1: std::vector" << std::endl; 
 		::easyfind(v, std::atoi(argv[1]));
+		std::cout << "Finded!" << std::endl;
+	} catch (...)
+	{
+		std::cout << "Not found" << std::endl;
+	};
+	std::cout << std::endl;
+	try
+	{
+		std::cout << "TEST 2: const std::vector" << std::endl; 
+		::easyfind(b, std::atoi(argv[1]));
 		std::cout << "Finded!" << std::endl;
 	} catch (...)
 	{
