@@ -89,10 +89,20 @@ This module introduces the structured handling of exceptions in C++. You will le
 | **ex02** | *No, you need form 28B, not 28C…* | Conversion of `Form` into the abstract class `AForm`, from which `ShrubberyCreationForm`, `RobotomyRequestForm`, and `PresidentialPardonForm` derive. Adds the execution flow of forms and the validation of permissions before execution. |
 | **ex03** | *At least this beats coffee-making* | Implementation of the `Intern` class, capable of dynamically creating forms through `makeForm()`. Unreadable structures are discarded, and a clear method is required to map form names to their corresponding classes. |
 
+### CPP06 — Casting and Type Conversion
+
+The goal of this module is to understand the different cast operators in C++ and when each one is the right tool. It covers converting string representations into scalar types, serializing a pointer to an integer and back, and identifying the real type behind a base-class pointer or reference at runtime. The exercises reinforce the difference between `static_cast`, `reinterpret_cast`, and `dynamic_cast`, always under the `-std=c++98` standard and without relying on `<typeinfo>`.
+
+| Exercise | Title | Description |
+|----------|-------|-------------|
+| **ex00** | *Conversion of Scalar Types* | A non-instantiable `ScalarConverter` class exposing a single `static convert` method that parses a string literal and converts it to `char`, `int`, `float`, and `double`. Handles special pseudo-literals (`nan`, `+inf`, `-inf`, `nanf`, `+inff`, `-inff`) and non-displayable characters, using `static_cast`. |
+| **ex01** | *Serialization* | A non-instantiable `Serializer` class that turns a pointer into a `uintptr_t` integer and back using `reinterpret_cast`, proving that `deserialize(serialize(&data)) == &data` recovers the exact same pointer. |
+| **ex02** | *Identify Real Type* | A polymorphic `Base` class with a public virtual destructor and empty derived classes `A`, `B`, `C`. A `generate()` function randomly instantiates one of them, and the `identify()` functions (pointer and reference versions) detect the real type using `dynamic_cast`, without using `<typeinfo>`. |
+
 ## Known Limitations
 
 - All code targets the **C++98** standard; no C++11 or later features are used.
-- The repository currently covers modules **CPP00 through CPP07**. Later modules (CPP06–CPP09) are not included yet.
+- The repository currently covers modules **CPP00 through CPP06**. Later modules (CPP07–CPP09) are not included yet.
 - TODO: list any exercises that are incomplete or were submitted without optional/bonus parts, if applicable.
 
 

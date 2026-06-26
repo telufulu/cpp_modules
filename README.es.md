@@ -89,10 +89,20 @@ Este módulo introduce el manejo estructurado de excepciones en C++. Aprenderás
 | **ex02** | *No, you need form 28B, not 28C…* | Conversión de `Form` en la clase abstracta `AForm`, de la que derivan `ShrubberyCreationForm`, `RobotomyRequestForm` y `PresidentialPardonForm`. Añade el flujo de ejecución de los formularios y la validación de permisos antes de ejecutarlos. |
 | **ex03** | *At least this beats coffee-making* | Implementación de la clase `Intern`, capaz de crear formularios dinámicamente mediante `makeForm()`. Las estructuras ilegibles se descartan, y se requiere un método claro para mapear los nombres de los formularios con sus clases correspondientes. |
 
+### CPP06 — Casting y conversión de tipos
+
+El objetivo de este módulo es entender los distintos operadores de cast en C++ y cuándo cada uno es la herramienta adecuada. Cubre la conversión de representaciones en cadena a tipos escalares, la serialización de un puntero a un entero y su recuperación, y la identificación del tipo real detrás de un puntero o referencia a la clase base en tiempo de ejecución. Los ejercicios refuerzan la diferencia entre `static_cast`, `reinterpret_cast` y `dynamic_cast`, siempre bajo el estándar `-std=c++98` y sin recurrir a `<typeinfo>`.
+
+| Ejercicio | Título | Descripción |
+|-----------|--------|-------------|
+| **ex00** | *Conversion of Scalar Types* | Una clase `ScalarConverter` no instanciable que expone un único método `static convert` que parsea un literal en cadena y lo convierte a `char`, `int`, `float` y `double`. Gestiona los pseudo-literales especiales (`nan`, `+inf`, `-inf`, `nanf`, `+inff`, `-inff`) y los caracteres no imprimibles, usando `static_cast`. |
+| **ex01** | *Serialization* | Una clase `Serializer` no instanciable que convierte un puntero en un entero `uintptr_t` y de vuelta usando `reinterpret_cast`, demostrando que `deserialize(serialize(&data)) == &data` recupera exactamente el mismo puntero. |
+| **ex02** | *Identify Real Type* | Una clase `Base` polimórfica con un destructor virtual público y clases derivadas vacías `A`, `B`, `C`. Una función `generate()` instancia una de ellas al azar, y las funciones `identify()` (versiones de puntero y de referencia) detectan el tipo real usando `dynamic_cast`, sin usar `<typeinfo>`. |
+
 ## Limitaciones conocidas
 
 - Todo el código está dirigido al estándar **C++98**; no se usan características de C++11 ni posteriores.
-- El repositorio cubre actualmente los módulos **CPP00 a CPP05**. Los módulos posteriores (CPP06–CPP09) aún no están incluidos.
+- El repositorio cubre actualmente los módulos **CPP00 a CPP06**. Los módulos posteriores (CPP07–CPP09) aún no están incluidos.
 - TODO: enumera los ejercicios que estén incompletos o que se hayan entregado sin las partes opcionales/bonus, si aplica.
 
 ## Recursos
