@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:01:21 by telufulu          #+#    #+#             */
-/*   Updated: 2026/07/05 19:40:49 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/07/05 23:44:00 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "RPN.hpp"
 
 /* ****************************************************************************	*/
-/*								CONSTRUCTORS				*/
+/*								CONSTRUCTORS									*/
 /* ****************************************************************************	*/
 
 RPN::RPN ( void )
@@ -47,7 +47,7 @@ RPN::RPN ( const RPN &cpy)
 }
 
 /* ****************************************************************************	*/
-/*								OPERATORS				*/
+/*								OPERATORS										*/
 /* ****************************************************************************	*/
 
 RPN	&RPN::operator=( const RPN  &rhs )
@@ -60,7 +60,7 @@ RPN	&RPN::operator=( const RPN  &rhs )
 }
 
 /* ****************************************************************************	*/
-/*								DESTRUCTOR				*/
+/*								DESTRUCTOR										*/
 /* ****************************************************************************	*/
 
 RPN::~RPN ( void )
@@ -70,7 +70,7 @@ RPN::~RPN ( void )
 }
 
 /* ****************************************************************************	*/
-/*									GETERS				*/
+/*									GETERS										*/
 /* ****************************************************************************	*/
 const std::stack<int>	&RPN::getStack( void ) const
 {
@@ -108,57 +108,65 @@ bool	RPN::empty( void ) const
 	return _stack.empty();
 }
 /* ****************************************************************************	*/
-/*									SETERS				*/
+/*									SETERS										*/
 /* ****************************************************************************	*/
 
 /* ****************************************************************************	*/
-/*								MEMBER FUNCTIONS			*/
+/*								MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/
 int	RPN::solve( void )
 {
-	int	a;
-	int	b;
-	int	op;
+	std::stack<int>	values;
+	char			token;
+	int				a;
+	int				b;
 
-	a = _stack.top() - '0';
-	if (a < 0 || a > 9)
-		throw "Error";
-	_stack.pop();
 	while (!_stack.empty())
 	{
-		b = _stack.top() - '0';
-		if (b < 0 || b > 9)
-			throw "Error";
+		token = _stack.top();
 		_stack.pop();
-		if (_stack.empty())
-			throw "Error";
-		op = _stack.top();
-		_stack.pop();
-		switch (op)
+
+		if (token >= '0' && token <= '9')
+			values.push(token - '0');
+		else
 		{
-			case '-':
-				a = a - b;
-				break ;
-			case '+':
-				a = a + b;
-				break ;
-			case '*':
-				a = a * b;
-				break ;
-			case '/':
-				if (!b)
-					continue ;
-				a = a / b;
-				break ;
-			default:
+			if (values.size() < 2)
 				throw "Error";
+
+			b = values.top();
+			values.pop();
+
+			a = values.top();
+			values.pop();
+
+			switch (token)
+			{
+				case '-':
+					values.push(a - b);
+					break ;
+				case '+':
+					values.push(a + b);
+					break ;
+				case '*':
+					values.push(a * b);
+					break ;
+				case '/':
+					if (b == 0)
+						throw "Error";
+					values.push(a / b);
+					break ;
+				default:
+					throw "Error";
+			}
 		}
 	}
-	return a;
+	if (values.size() != 1)
+		throw "Error";
+	return (values.top());
 }
 
 /* ****************************************************************************	*/
-/*							NON MEMBER FUNCTIONS				*/
+/*							NON MEMBER FUNCTIONS								*/
 /* ****************************************************************************	*/
 std::ostream	&operator<<(std::ostream &out, const RPN &obj)
 {
