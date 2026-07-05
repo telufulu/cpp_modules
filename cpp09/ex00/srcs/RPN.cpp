@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:01:21 by telufulu          #+#    #+#             */
-/*   Updated: 2026/07/05 18:58:02 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/07/05 19:40:49 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ RPN::RPN ( void )
 RPN::RPN( const std::string &argv )
 {
 	//std::cout << "\033[90mDefault RPN constructor called\033[0m" << std::endl;
-	size_t	len = argv.size();
-	
-	for( size_t i = 0; i < len; ++i)
+	for( size_t i = argv.size() - 1; i + 1; --i)
 	{
-		if (_stack.size() == 10)
-			throw ;
+		if (_stack.size() == 19)
+			throw "Error: ";
 		else if (argv[i] == ' ')
 			continue ;
 		_stack.push(argv[i]);
@@ -74,7 +72,7 @@ RPN::~RPN ( void )
 /* ****************************************************************************	*/
 /*									GETERS				*/
 /* ****************************************************************************	*/
-const std::stack<char>	&RPN::getStack( void ) const
+const std::stack<int>	&RPN::getStack( void ) const
 {
 	return _stack;
 }
@@ -87,8 +85,8 @@ std::string	RPN::getStringStack( void ) const
 	while (!stack.empty())
 	{
 		if (!res.empty())
-			res = " " + res;
-		res = stack.top() + res;
+			res += " ";
+		res += stack.top();
 		stack.pop();
 	}
 	return res;
@@ -116,6 +114,48 @@ bool	RPN::empty( void ) const
 /* ****************************************************************************	*/
 /*								MEMBER FUNCTIONS			*/
 /* ****************************************************************************	*/
+int	RPN::solve( void )
+{
+	int	a;
+	int	b;
+	int	op;
+
+	a = _stack.top() - '0';
+	if (a < 0 || a > 9)
+		throw "Error";
+	_stack.pop();
+	while (!_stack.empty())
+	{
+		b = _stack.top() - '0';
+		if (b < 0 || b > 9)
+			throw "Error";
+		_stack.pop();
+		if (_stack.empty())
+			throw "Error";
+		op = _stack.top();
+		_stack.pop();
+		switch (op)
+		{
+			case '-':
+				a = a - b;
+				break ;
+			case '+':
+				a = a + b;
+				break ;
+			case '*':
+				a = a * b;
+				break ;
+			case '/':
+				if (!b)
+					continue ;
+				a = a / b;
+				break ;
+			default:
+				throw "Error";
+		}
+	}
+	return a;
+}
 
 /* ****************************************************************************	*/
 /*							NON MEMBER FUNCTIONS				*/

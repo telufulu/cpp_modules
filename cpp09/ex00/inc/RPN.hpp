@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:01:32 by telufulu          #+#    #+#             */
-/*   Updated: 2026/07/05 18:53:48 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/07/05 19:13:13 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,19 @@ class RPN
 		~RPN( void );
 
 		// Geters and seters
-		const std::stack<char>	&getStack( void ) const;
+		const std::stack<int>	&getStack( void ) const;
 		std::string				getStringStack( void ) const;
 		char					top( void );
 		void					pop( void );
 		bool					empty( void ) const;
 
+		// Member functions
+		int	solve( void );
 	private:
 		// Constructors
 		RPN( void );
 		
-		std::stack<char>	_stack;
+		std::stack<int>	_stack;
 };
 
 std::ostream &operator<<(std::ostream &out, const RPN &obj);
