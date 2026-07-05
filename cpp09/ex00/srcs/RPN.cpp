@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/05 17:01:21 by telufulu          #+#    #+#             */
+/*   Updated: 2026/07/05 18:58:02 by telufulu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>		// cout
 #include "RPN.hpp"
 
@@ -5,16 +17,34 @@
 /*								CONSTRUCTORS				*/
 /* ****************************************************************************	*/
 
-RPN::RPN ( void ) : _data(0)
+RPN::RPN ( void )
+{
+	//std::cout << "\033[90mVoid RPN constructor called\033[0m" << std::endl;
+	return ;
+}
+
+RPN::RPN( const std::string &argv )
 {
 	//std::cout << "\033[90mDefault RPN constructor called\033[0m" << std::endl;
+	size_t	len = argv.size();
+	
+	for( size_t i = 0; i < len; ++i)
+	{
+		if (_stack.size() == 10)
+			throw ;
+		else if (argv[i] == ' ')
+			continue ;
+		_stack.push(argv[i]);
+	}
 	return ;
 }
 
 RPN::RPN ( const RPN &cpy)
 {
 	//std::cout << "\033[90mCopy RPN constructor called\033[0m" << std::endl;
-	this->_data = cpy._data;
+	if (this == &cpy)
+		return ;
+	this->_stack = cpy.getStack();
 	return ;
 }
 
@@ -27,7 +57,7 @@ RPN	&RPN::operator=( const RPN  &rhs )
 	//std::cout << "\033[90mCopy RPN operator called\033[0m" << std::endl;
 	if (this == &rhs)
 		return *this;
-	this->_data = rhs._data;
+	this->_stack = rhs.getStack();
 	return *this;
 }
 
@@ -44,7 +74,41 @@ RPN::~RPN ( void )
 /* ****************************************************************************	*/
 /*									GETERS				*/
 /* ****************************************************************************	*/
+const std::stack<char>	&RPN::getStack( void ) const
+{
+	return _stack;
+}
 
+std::string	RPN::getStringStack( void ) const
+{
+	RPN	stack(*this);
+	std::string	res;
+
+	while (!stack.empty())
+	{
+		if (!res.empty())
+			res = " " + res;
+		res = stack.top() + res;
+		stack.pop();
+	}
+	return res;
+}
+
+char	RPN::top( void )
+{
+	return _stack.top();
+}
+
+void	RPN::pop( void )
+{
+	_stack.pop();
+	return ;
+}
+
+bool	RPN::empty( void ) const
+{
+	return _stack.empty();
+}
 /* ****************************************************************************	*/
 /*									SETERS				*/
 /* ****************************************************************************	*/
@@ -58,7 +122,8 @@ RPN::~RPN ( void )
 /* ****************************************************************************	*/
 std::ostream	&operator<<(std::ostream &out, const RPN &obj)
 {
-	(void)obj;
-	out << "This is the overload of '<<' for the RPN class" << std::endl;
+	std::string	res = obj.getStringStack();
+
+	out << res;
 	return out;
 }
