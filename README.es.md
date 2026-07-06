@@ -99,11 +99,22 @@ El objetivo de este módulo es entender los distintos operadores de cast en C++ 
 | **ex01** | *Serialization* | Una clase `Serializer` no instanciable que convierte un puntero en un entero `uintptr_t` y de vuelta usando `reinterpret_cast`, demostrando que `deserialize(serialize(&data)) == &data` recupera exactamente el mismo puntero. |
 | **ex02** | *Identify Real Type* | Una clase `Base` polimórfica con un destructor virtual público y clases derivadas vacías `A`, `B`, `C`. Una función `generate()` instancia una de ellas al azar, y las funciones `identify()` (versiones de puntero y de referencia) detectan el tipo real usando `dynamic_cast`, sin usar `<typeinfo>`. |
 
+### CPP07 — Templates
+
+El objetivo de este módulo es entender cómo los templates permiten escribir código genérico y reutilizable en C++. En lugar de crear funciones o clases separadas para cada tipo, los templates permiten que el compilador genere la versión adecuada según el tipo utilizado.
+
+Este módulo introduce los templates de función, las funciones template que operan sobre arrays y las clases template. También refuerza conceptos importantes de C++98 como las referencias, la const correctness, la implementación en headers y la separación entre interfaz y comportamiento al trabajar con código genérico.
+
+| Ejercicio | Título | Descripción |
+|----------|--------|-------------|
+| **ex00** | *Start with a few functions* | Implementación de tres templates de función: `swap`, `min` y `max`. Introduce la sintaxis básica de los templates y muestra cómo una única definición de función puede funcionar con distintos tipos, siempre que esos tipos soporten las operaciones necesarias. |
+| **ex01** | *Iter* | Implementación de una función template `iter` que aplica una función a cada elemento de un array. Refuerza la deducción de parámetros template, el recorrido de arrays, el uso de punteros a función o funciones invocables, y la const correctness. |
+| **ex02** | *Array* | Implementación de una clase template `Array<T>` que gestiona un array reservado dinámicamente. Introduce el diseño de clases genéricas, el comportamiento de copia profunda, la comprobación de límites mediante excepciones y la gestión correcta de memoria en un contexto con templates. |
+
 ## Limitaciones conocidas
 
 - Todo el código está dirigido al estándar **C++98**; no se usan características de C++11 ni posteriores.
-- El repositorio cubre actualmente los módulos **CPP00 a CPP06**. Los módulos posteriores (CPP07–CPP09) aún no están incluidos.
-- TODO: enumera los ejercicios que estén incompletos o que se hayan entregado sin las partes opcionales/bonus, si aplica.
+- El repositorio cubre actualmente los módulos **CPP00 a CPP07**. Los módulos posteriores (CPP08–CPP09) aún no están incluidos.
 
 ## Recursos
 

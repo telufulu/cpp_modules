@@ -99,12 +99,22 @@ The goal of this module is to understand the different cast operators in C++ and
 | **ex01** | *Serialization* | A non-instantiable `Serializer` class that turns a pointer into a `uintptr_t` integer and back using `reinterpret_cast`, proving that `deserialize(serialize(&data)) == &data` recovers the exact same pointer. |
 | **ex02** | *Identify Real Type* | A polymorphic `Base` class with a public virtual destructor and empty derived classes `A`, `B`, `C`. A `generate()` function randomly instantiates one of them, and the `identify()` functions (pointer and reference versions) detect the real type using `dynamic_cast`, without using `<typeinfo>`. |
 
+### CPP07 — Templates
+
+The goal of this module is to understand how templates allow writing generic and reusable code in C++. Instead of creating separate functions or classes for each type, templates let the compiler generate the appropriate version depending on the type used.
+
+This module introduces function templates, template functions that operate on arrays, and class templates. It also reinforces important C++98 concepts such as references, const correctness, header-only implementation, and the separation between interface and behavior when working with generic code.
+
+| Exercise | Title | Description |
+|----------|-------|-------------|
+| **ex00** | *Start with a few functions* | Implementation of three function templates: `swap`, `min`, and `max`. Introduces the basic syntax of templates and shows how a single function definition can work with different types, as long as those types support the required operations. |
+| **ex01** | *Iter* | Implementation of a function template `iter` that applies a function to each element of an array. Reinforces template parameter deduction, array traversal, function pointers or callable functions, and const correctness. |
+| **ex02** | *Array* | Implementation of a class template `Array<T>` that manages a dynamically allocated array. Introduces generic class design, deep copy behavior, bounds checking through exceptions, and proper memory management in a templated context. |
+
 ## Known Limitations
 
 - All code targets the **C++98** standard; no C++11 or later features are used.
-- The repository currently covers modules **CPP00 through CPP06**. Later modules (CPP07–CPP09) are not included yet.
-- TODO: list any exercises that are incomplete or were submitted without optional/bonus parts, if applicable.
-
+- The repository currently covers modules **CPP00 through CPP07**. Later modules (CPP08–CPP09) are not included yet.
 
 ## Resources
 
