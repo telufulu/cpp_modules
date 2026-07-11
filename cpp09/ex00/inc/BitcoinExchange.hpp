@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 20:38:13 by telufulu          #+#    #+#             */
-/*   Updated: 2026/07/08 20:58:14 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/07/11 15:07:05 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class BitcoinExchange
 {
 	public:
 		// Constructors
-		BitcoinExchange( void );
+		BitcoinExchange( const char *file_path );
 		BitcoinExchange( const BitcoinExchange &cpy );
 
 		// Arithmetic operators
@@ -29,7 +29,16 @@ class BitcoinExchange
 
 		// Destructor
 		~BitcoinExchange( void );
+
 	private:
+		BitcoinExchange( void );
+
+		// Auxiliar functions
+		std::string	_getDate( const std::string &line, char sep ) const;
+		double		_getValue( const std::string &line, char sep ) const;
+		bool		_isValidDate(const std::string& date) const;
+		bool		_isValidValue(const std::string& valueStr, double& value) const;
+		
 		std::map<std::string, int>	_db;
 };
 
