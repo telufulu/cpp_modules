@@ -111,10 +111,22 @@ Este módulo introduce los templates de función, las funciones template que ope
 | **ex01** | *Iter* | Implementación de una función template `iter` que aplica una función a cada elemento de un array. Refuerza la deducción de parámetros template, el recorrido de arrays, el uso de punteros a función o funciones invocables, y la const correctness. |
 | **ex02** | *Array* | Implementación de una clase template `Array<T>` que gestiona un array reservado dinámicamente. Introduce el diseño de clases genéricas, el comportamiento de copia profunda, la comprobación de límites mediante excepciones y la gestión correcta de memoria en un contexto con templates. |
 
+### CPP08 — Contenedores con templates, iteradores y algoritmos
+
+El objetivo de este módulo es familiarizarse con la Standard Template Library de C++ mediante contenedores, iteradores y algoritmos. Introduce cómo los contenedores genéricos pueden almacenar y organizar datos, cómo los iteradores ofrecen una forma común de recorrerlos, y cómo los algoritmos estándar pueden simplificar operaciones como buscar o comparar valores.
+
+Este módulo refuerza el diseño basado en templates, el manejo de excepciones, la const correctness y la importancia de elegir el contenedor adecuado para cada problema. También explora la diferencia entre los contenedores normales y los adaptadores de contenedores, como `std::stack`.
+
+| Ejercicio | Título | Descripción |
+|----------|--------|-------------|
+| **ex00** | *Easy find* | Implementación de una función template `easyfind` que busca un entero dentro de un contenedor. Introduce el recorrido mediante iteradores y el uso de algoritmos estándar como `std::find`. |
+| **ex01** | *Span* | Implementación de una clase `Span` que almacena una cantidad limitada de enteros y calcula la distancia mínima y máxima entre ellos. Refuerza el manejo de excepciones, la ordenación, la inserción por rangos y la gestión de datos mediante contenedores. |
+| **ex02** | *Mutated abomination* | Implementación de una clase `MutantStack` que se comporta como `std::stack`, pero expone iteradores hacia su contenedor interno. Explora los adaptadores de contenedores, la herencia desde clases de la STL y el acceso a iteradores mediante el miembro protegido `c`. |
+
 ## Limitaciones conocidas
 
 - Todo el código está dirigido al estándar **C++98**; no se usan características de C++11 ni posteriores.
-- El repositorio cubre actualmente los módulos **CPP00 a CPP07**. Los módulos posteriores (CPP08–CPP09) aún no están incluidos.
+- El repositorio cubre actualmente los módulos **CPP00 a CPP08**. El módulo CPP09 aún no está incluido.
 
 ## Recursos
 

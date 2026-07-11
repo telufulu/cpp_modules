@@ -111,10 +111,22 @@ This module introduces function templates, template functions that operate on ar
 | **ex01** | *Iter* | Implementation of a function template `iter` that applies a function to each element of an array. Reinforces template parameter deduction, array traversal, function pointers or callable functions, and const correctness. |
 | **ex02** | *Array* | Implementation of a class template `Array<T>` that manages a dynamically allocated array. Introduces generic class design, deep copy behavior, bounds checking through exceptions, and proper memory management in a templated context. |
 
+### CPP08 — Templated Containers, Iterators, and Algorithms
+
+The goal of this module is to become familiar with the C++ Standard Template Library through containers, iterators, and algorithms. It introduces how generic containers can store and organize data, how iterators provide a common way to traverse them, and how standard algorithms can simplify operations such as searching and comparing values.
+
+This module reinforces template-based design, exception handling, const correctness, and the importance of choosing the right container for the problem. It also explores the difference between regular containers and container adapters, such as `std::stack`.
+
+| Exercise | Title | Description |
+|----------|-------|-------------|
+| **ex00** | *Easy find* | Implementation of a function template `easyfind` that searches for an integer inside a container. Introduces iterator-based traversal and the use of standard algorithms such as `std::find`. |
+| **ex01** | *Span* | Implementation of a `Span` class that stores a limited amount of integers and computes the shortest and longest span between them. Reinforces exception handling, sorting, range insertion, and container-based data management. |
+| **ex02** | *Mutated abomination* | Implementation of a `MutantStack` class that behaves like `std::stack` while exposing iterators to its underlying container. Explores container adapters, inheritance from STL classes, and iterator access through the protected member `c`. |
+
 ## Known Limitations
 
 - All code targets the **C++98** standard; no C++11 or later features are used.
-- The repository currently covers modules **CPP00 through CPP07**. Later modules (CPP08–CPP09) are not included yet.
+- The repository currently covers modules **CPP00 through CPP08**. Module CPP09 is not included yet.
 
 ## Resources
 
