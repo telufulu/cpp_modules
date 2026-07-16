@@ -122,32 +122,25 @@ BitcoinExchange::BitcoinExchange( const char *file_path )
 	size_t			sep;
 
 	if (!file.is_open())
-		throw std::runtime_error("could not open database.");
+		throw std::runtime_error("could not open database");
 	if (!std::getline(file, line))
-		throw std::runtime_error("empty database.");
+		throw std::runtime_error("empty database");
 	if (line != "date,exchange_rate")
-		throw std::runtime_error("wrong format file");
+		throw std::runtime_error("wrong format csv file");
 	while (std::getline(file, line))
 	{
-		try
-		{
-			sep = line.find(',');
-			if (sep == std::string::npos)
-				throw std::runtime_error("wrong format file");
-			date = line.substr(0, sep);
-			if (!this->_isValidDate(date))
-				throw std::runtime_error("invalid date");
-			if (!this->_isValidValue(line.substr(sep + 1), rate))
-				throw std::runtime_error("invalid value");
-			this->_db[date] = rate;
-		}
-		catch (const std::exception &e)
-		{
-			continue ;
-		}
+		sep = line.find(',');
+		if (sep == std::string::npos)
+			throw std::runtime_error("wrong format file");
+		date = line.substr(0, sep);
+		if (!this->_isValidDate(date))
+			throw std::runtime_error("invalid csv date");
+		if (!this->_isValidValue(line.substr(sep + 1), rate))
+			throw std::runtime_error("invalid csv value");
+		this->_db[date] = rate;
 	}
 	if (this->_db.empty())
-		throw std::runtime_error("empty database.");
+		throw std::runtime_error("empty csv database");
 	return ;
 }
 
