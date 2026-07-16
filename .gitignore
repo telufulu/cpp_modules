@@ -33,3 +33,5 @@ objs/
 
 # Others
 *_schubbery
+*data.csv
+*input.txt
