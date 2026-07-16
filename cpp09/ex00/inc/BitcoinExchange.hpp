@@ -30,16 +30,20 @@ class BitcoinExchange
 		// Destructor
 		~BitcoinExchange( void );
 
+		// Member functions
+		void	processInput( const char *file_path ) const;
+
 	private:
 		BitcoinExchange( void );
 
 		// Auxiliar functions
-		std::string	_getDate( const std::string &line, char sep ) const;
-		double		_getValue( const std::string &line, char sep ) const;
-		bool		_isValidDate(const std::string& date) const;
-		bool		_isValidValue(const std::string& valueStr, double& value) const;
-		
-		std::map<std::string, int>	_db;
+		std::string	_getDate( const std::string &line, size_t sep) const;
+		double		_getValue( const std::string &line, size_t sep ) const;
+		bool		_isValidDate( const std::string &date ) const;
+		bool		_isValidValue( const std::string &valueStr, double &value ) const;
+		double		_getRateForDate( const std::string &date ) const;
+
+		std::map<std::string, double>	_db;
 };
 
 std::ostream &operator<<(std::ostream &out, const BitcoinExchange &obj);

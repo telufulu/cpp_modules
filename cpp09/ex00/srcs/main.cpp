@@ -12,6 +12,7 @@
 
 #include "BitcoinExchange.hpp"
 #include <iostream>	// cout
+#include <stdexcept>
 
 int	main ( int argc, const char **argv  )
 {
@@ -20,6 +21,14 @@ int	main ( int argc, const char **argv  )
 		return 1;
 	}
 
-	BitcoinExchange	data(argv[1]);
+	try
+	{
+		BitcoinExchange	data("data.csv");
+
+		data.processInput(argv[1]);
+	} catch ( std::exception &e )
+	{
+		std::cerr << "\033[31mError:\033[0m " <<  e.what() << std::endl;
+	}
 	return 0;
 }
