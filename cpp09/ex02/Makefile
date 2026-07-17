@@ -30,6 +30,9 @@ $(O)%.o:	$(S)%.cpp
 	@[ -d $(O) ] || mkdir -p $(O)
 	@$(CXX) $(CXXFLAGS) -I $(I) -c $< -o $@
 
+run:	all
+	@./PmergeMe 3 8 1 5 9 2 0
+
 clean:
 	@rm -rf $(O)
 

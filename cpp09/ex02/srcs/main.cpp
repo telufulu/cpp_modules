@@ -4,10 +4,10 @@ int	main( int argc, char **argv )
 {
 	try
 	{
-		PmergeMe	p;
+		PmergeMe	p(argc, argv);
 
-		p.solveVector(argc, argv);
-		p.solveDeque(argc, argv);
+		p.solveVector();
+		p.solveDeque();
 	}
 	catch (std::exception &e)
 	{

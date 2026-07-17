@@ -14,21 +14,21 @@
 class PmergeMe
 {
 	public:
-		PmergeMe( void );
+		PmergeMe ( int argc, char **argv );
 		PmergeMe( const PmergeMe &cpy );
 		PmergeMe &operator=( const PmergeMe &rhs );
 		~PmergeMe( void );
 
-		void	solveVector( int argc, char **argv );
-		void	solveDeque( int argc, char **argv );
+		void	solveVector( void );
+		void	solveDeque( void );
 
 	private:
 		std::vector<int>	_vector;
 		std::deque<int>		_deque;
 
-		void	_parseVector( int ac, char **av );
-		void	_parseDeque( int ac, char **av );
-		void	_printVector( std::string msg, std::vector<int> v ) const;
+		PmergeMe( void );
+
+		void	_printVector( void ) const;
 
 		std::vector<int>::iterator	_binaryVector( std::vector<int> &v, int n, std::vector<int>::iterator end );
 		std::vector<int>			_sortVector( std::vector<int> v );
