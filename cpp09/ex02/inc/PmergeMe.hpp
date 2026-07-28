@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 13:53:22 by telufulu          #+#    #+#             */
-/*   Updated: 2026/07/28 13:53:24 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/07/28 14:53:25 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class PmergeMe
 
 		void	solveVector( void );
 		void	solveDeque( void );
+		void	printVector( void ) const;
 
 	private:
 		std::vector<int>	_vector;
@@ -40,19 +41,11 @@ class PmergeMe
 
 		PmergeMe( void );
 
-		void	_printVector( void ) const;
-
-		std::vector<int>::iterator	_binaryVector( std::vector<int> &v, 
-				int n, std::vector<int>::iterator end );
-		std::vector<int>			_sortVector( std::vector<int> v );
-		void						_insertVector( std::vector<int> &main,
-				std::vector<int> &small, std::vector<int> &big );
-								
-		std::deque<int>::iterator	_binaryDeque( std::deque<int> &d,
-				int n, std::deque<int>::iterator end );
-		std::deque<int>				_sortDeque( std::deque<int> d );
-		void						_insertDeque( std::deque<int> &main,
-				std::deque<int> &small, std::deque<int> &big );
+		// Vector
+		std::vector<int>	_sortVector( std::vector<int> v );
+		
+		// Deque
+		std::deque<int>		_sortDeque( std::deque<int> d );
 
 };
 
