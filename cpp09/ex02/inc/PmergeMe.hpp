@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/28 13:53:22 by telufulu          #+#    #+#             */
+/*   Updated: 2026/07/28 13:53:24 by telufulu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
@@ -30,13 +42,17 @@ class PmergeMe
 
 		void	_printVector( void ) const;
 
-		std::vector<int>::iterator	_binaryVector( std::vector<int> &v, int n, std::vector<int>::iterator end );
+		std::vector<int>::iterator	_binaryVector( std::vector<int> &v, 
+				int n, std::vector<int>::iterator end );
 		std::vector<int>			_sortVector( std::vector<int> v );
-		void						_insertVector( std::vector<int> &main, std::vector<int> &small, std::vector<int> &big );
+		void						_insertVector( std::vector<int> &main,
+				std::vector<int> &small, std::vector<int> &big );
 								
-		std::deque<int>::iterator	_binaryDeque( std::deque<int> &d, int n, std::deque<int>::iterator end );
+		std::deque<int>::iterator	_binaryDeque( std::deque<int> &d,
+				int n, std::deque<int>::iterator end );
 		std::deque<int>				_sortDeque( std::deque<int> d );
-		void						_insertDeque( std::deque<int> &main, std::deque<int> &small, std::deque<int> &big );
+		void						_insertDeque( std::deque<int> &main,
+				std::deque<int> &small, std::deque<int> &big );
 
 };
 
