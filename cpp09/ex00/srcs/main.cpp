@@ -6,7 +6,7 @@
 /*   By: telufulu <telufulu@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 17:01:28 by telufulu          #+#    #+#             */
-/*   Updated: 2026/07/08 20:49:39 by telufulu         ###   ########.fr       */
+/*   Updated: 2026/07/28 15:19:42 by telufulu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 int	main ( int argc, const char **argv  )
 {
 	if ( argc != 2 || !argv)
-	{
 		return 1;
-	}
 
 	try
 	{
