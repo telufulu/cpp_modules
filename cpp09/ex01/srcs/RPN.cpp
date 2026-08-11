@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <iostream>		// cout
+#include <string>
+#include <sstream>
 #include "RPN.hpp"
 
 /* ****************************************************************************	*/
@@ -25,14 +27,31 @@ RPN::RPN ( void )
 
 RPN::RPN( const std::string &argv )
 {
+	std::istringstream	iss(argv);
+	std::string			token;
+	std::stack<int>		tmp;
+
 	//std::cout << "\033[90mDefault RPN constructor called\033[0m" << std::endl;
-	for( size_t i = argv.size() - 1; i + 1; --i)
+	if (argv.empty())
+		throw "Error: ";
+	while (iss >> token)
 	{
-		if (_stack.size() == 19)
+		if (token.length() != 1)
 			throw "Error: ";
-		else if (argv[i] == ' ')
-			continue ;
-		_stack.push(argv[i]);
+		else if (token[0] >= '0' && token[0] <= '9')
+			tmp.push(token[0] - '0');
+		else if (token[0] == '+' || token[0] == '-'
+			|| token[0] == '*' || token[0] == '/')
+			tmp.push(token[0]);
+		else
+			throw "Error: ";
+	}
+	if (tmp.empty())
+		throw "Error: ";
+	while (!tmp.empty())
+	{
+		_stack.push(tmp.top());
+		tmp.pop();
 	}
 	return ;
 }
@@ -79,14 +98,18 @@ const std::stack<int>	&RPN::getStack( void ) const
 
 std::string	RPN::getStringStack( void ) const
 {
-	RPN	stack(*this);
+	RPN			stack(*this);
+	char		c;
 	std::string	res;
 
 	while (!stack.empty())
 	{
 		if (!res.empty())
 			res += " ";
-		res += stack.top();
+		c = stack.top();
+		if (c < 10)
+			c += '0';
+		res += c;
 		stack.pop();
 	}
 	return res;
@@ -126,8 +149,8 @@ int	RPN::solve( void )
 		token = _stack.top();
 		_stack.pop();
 
-		if (token >= '0' && token <= '9')
-			values.push(token - '0');
+		if (token >= 0 && token <= 9)
+			values.push(token);
 		else
 		{
 			if (values.size() < 2)
