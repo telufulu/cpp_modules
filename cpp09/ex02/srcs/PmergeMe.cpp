@@ -13,13 +13,19 @@
 #include <iostream>		// cout
 #include <cctype>		// isdigit
 #include <cstdlib>		// atoi
-#include <cstddef>		// deque
+#include <cstddef>		// size_t
+#include <climits>		// INT_MAX
+#include <stdexcept>	// runtime_error
+#include <algorithm>	// find, lower_bound
+#include <ctime>		// clock
+#include <iomanip>		// fixed, setprecision
 #include "PmergeMe.hpp"
 
-/* ****************************************************************************	*/
-/*								AUX FUNCTIONS									*/
-/* ****************************************************************************	*/
-static bool	is_number( char *s ) // instead of isdigit to check all chars
+/* ************************************************************************** */
+/*                              AUX FUNCTIONS                                  */
+/* ************************************************************************** */
+
+static bool	is_number( char *s )
 {
 	int	i;
 
@@ -35,7 +41,7 @@ static bool	is_number( char *s ) // instead of isdigit to check all chars
 	return (true);
 }
 
-static int	to_int( char *s ) // instead of atoi throw specific errors
+static int	to_int( char *s )
 {
 	long	n;
 	int		i;
@@ -49,24 +55,63 @@ static int	to_int( char *s ) // instead of atoi throw specific errors
 			throw std::runtime_error("argument is too large");
 		i++;
 	}
-	if (n < 0)
-		throw std::runtime_error("numbers must be unsigned");
 	return (static_cast<int>(n));
 }
 
-/* ****************************************************************************	*/
-/*								CONSTRUCTORS									*/
-/* ****************************************************************************	*/
-
-PmergeMe::PmergeMe ( void )
+static bool	contains_number( const std::vector<int> &v, int n )
 {
-	//std::cout << "\033[90mVoid PmergeMe constructor called\033[0m" << std::endl;
+	for (size_t i = 0; i < v.size(); ++i)
+	{
+		if (v[i] == n)
+			return (true);
+	}
+	return (false);
+}
+
+static std::vector<size_t>	get_jacobsthal_order( size_t size )
+{
+	std::vector<size_t>	order;
+	size_t				jacob_prev;
+	size_t				jacob_curr;
+	size_t				jacob_next;
+	size_t				end;
+
+	if (size == 0)
+		return (order);
+	order.push_back(0);
+	jacob_prev = 1;
+	jacob_curr = 1;
+	while (order.size() < size)
+	{
+		// Take the current number, add two copies of the previous number, and that will be the next one.
+		jacob_next = jacob_curr + 2 * jacob_prev;
+		end = jacob_next;
+		if (end > size)
+			end = size;
+		while (end > jacob_curr)
+		{
+			order.push_back(end - 1);
+			if (order.size() == size)
+				break ;
+			--end;
+		}
+		jacob_prev = jacob_curr;
+		jacob_curr = jacob_next;
+	}
+	return (order);
+}
+
+/* ************************************************************************** */
+/*                              CONSTRUCTORS                                   */
+/* ************************************************************************** */
+
+PmergeMe::PmergeMe( void )
+{
 	return ;
 }
 
-PmergeMe::PmergeMe ( int argc, char **argv )
+PmergeMe::PmergeMe( int argc, char **argv )
 {
-	//std::cout << "\033[90mDefault PmergeMe constructor called\033[0m" << std::endl;
 	int	n;
 
 	if (argc < 2)
@@ -78,58 +123,49 @@ PmergeMe::PmergeMe ( int argc, char **argv )
 		if (!is_number(argv[i]))
 			throw std::runtime_error("all arguments must be numbers");
 		n = to_int(argv[i]);
+		if (n <= 0)
+			throw std::runtime_error("numbers must be positive");
+		if (contains_number(_vector, n))
+			throw std::runtime_error("duplicate numbers are not allowed");
 		_vector.push_back(n);
 		_deque.push_back(n);
 	}
 	return ;
 }
 
-PmergeMe::PmergeMe ( const PmergeMe &cpy)
+PmergeMe::PmergeMe( const PmergeMe &cpy )
 {
-	//std::cout << "\033[90mCopy PmergeMe constructor called\033[0m" << std::endl;
-	if (this == &cpy)
-		return ;
-	this->_vector = cpy._vector;
-	this->_deque = cpy._deque;
+	*this = cpy;
 	return ;
 }
 
-/* ****************************************************************************	*/
-/*								OPERATORS										*/
-/* ****************************************************************************	*/
+/* ************************************************************************** */
+/*                               OPERATORS                                     */
+/* ************************************************************************** */
 
-PmergeMe	&PmergeMe::operator=( const PmergeMe  &rhs )
+PmergeMe	&PmergeMe::operator=( const PmergeMe &rhs )
 {
-	//std::cout << "\033[90mCopy PmergeMe operator called\033[0m" << std::endl;
-	if (this == &rhs)
-		return *this;
-	this->_vector = rhs._vector;
-	this->_deque = rhs._deque;
-	return *this;
+	if (this != &rhs)
+	{
+		_vector = rhs._vector;
+		_deque = rhs._deque;
+	}
+	return (*this);
 }
 
-/* ****************************************************************************	*/
-/*								DESTRUCTOR										*/
-/* ****************************************************************************	*/
+/* ************************************************************************** */
+/*                               DESTRUCTOR                                    */
+/* ************************************************************************** */
 
-PmergeMe::~PmergeMe ( void )
+PmergeMe::~PmergeMe( void )
 {
-	//std::cout << "\033[90mPmergeMe destructor called\033[0m" << std::endl;
 	return ;
 }
 
-/* ****************************************************************************	*/
-/*									GETERS										*/
-/* ****************************************************************************	*/
+/* ************************************************************************** */
+/*                            MEMBER FUNCTIONS                                 */
+/* ************************************************************************** */
 
-/* ****************************************************************************	*/
-/*									SETERS										*/
-/* ****************************************************************************	*/
-
-/* ****************************************************************************	*/
-/*								MEMBER FUNCTIONS								*/
-/* ****************************************************************************	*/
-// Vector
 void	PmergeMe::printVector( void ) const
 {
 	for (size_t i = 0; i < _vector.size(); ++i)
@@ -143,31 +179,40 @@ void	PmergeMe::solveVector( void )
 	clock_t	end;
 	double	vector_time;
 
-	std::cout << "Before:\t";
+	std::cout << "Before:";
 	printVector();
+
 	start = clock();
 	_vector = _sortVector(_vector);
 	end = clock();
+
 	vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-	std::cout << "After:\t";
+
+	std::cout << "After:";
 	printVector();
+
+	std::cout << std::fixed << std::setprecision(5);
 	std::cout << "Time to process a range of " << _vector.size()
-		<< " elements with std::vector\t: " << vector_time << " us" << std::endl;
+		<< " elements with std::vector : " << vector_time << " us" << std::endl;
 }
 
 std::vector<int>	PmergeMe::_sortVector( std::vector<int> v )
 {
-	std::vector<int>	main;
-	std::vector<int>	small;
-	std::vector<int>	big;
-	int					rest;
-	bool				has_rest;
-	size_t				size = v.size();
+	std::vector<int>				main;
+	std::vector<int>				small;
+	std::vector<int>				big;
+	std::vector<size_t>			order;
+	std::vector<int>::iterator	it;
+	std::vector<int>::iterator	end;
+	int							rest;
+	bool						has_rest;
+	size_t						size;
+	size_t						index;
 
+	size = v.size();
 	if (size <= 1)
 		return (v);
 	has_rest = false;
-	//pop the last if is odd
 	if (size % 2 != 0)
 	{
 		rest = v.back();
@@ -175,7 +220,6 @@ std::vector<int>	PmergeMe::_sortVector( std::vector<int> v )
 		has_rest = true;
 		--size;
 	}
-	//push each number to big/small group
 	for (size_t i = 0; i < size; i += 2)
 	{
 		if (v[i] < v[i + 1])
@@ -190,33 +234,22 @@ std::vector<int>	PmergeMe::_sortVector( std::vector<int> v )
 		}
 	}
 	main = _sortVector(big);
-
-	// insert small numbers finding the start of the big vector
-	std::vector<int>::iterator it;
-	std::vector<int>::iterator end;
-	
-	for (size_t i = 0; i < small.size(); ++i)
-    {
-		// finds the position of the big number
-        end = std::find(main.begin(), main.end(), big[i]);
-        it = main.begin();
-        while (it != end && small[i] > *it)
-            ++it;
-		// inserts the number before it
-        main.insert(it, small[i]);
-    }
-    if (has_rest)
-    {
-		// simply inserts the remain number
-        it = main.begin();
-        while (it != main.end() && rest > *it)
-            ++it;
-        main.insert(it, rest);
-    }
+	order = get_jacobsthal_order(small.size());
+	for (size_t i = 0; i < order.size(); ++i)
+	{
+		index = order[i];
+		end = std::find(main.begin(), main.end(), big[index]);
+		it = std::lower_bound(main.begin(), end, small[index]);
+		main.insert(it, small[index]);
+	}
+	if (has_rest)
+	{
+		it = std::lower_bound(main.begin(), main.end(), rest);
+		main.insert(it, rest);
+	}
 	return (main);
 }
 
-// Deque
 void	PmergeMe::solveDeque( void )
 {
 	clock_t	start;
@@ -226,73 +259,75 @@ void	PmergeMe::solveDeque( void )
 	start = clock();
 	_deque = _sortDeque(_deque);
 	end = clock();
+
 	deque_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
+
+	std::cout << std::fixed << std::setprecision(5);
 	std::cout << "Time to process a range of " << _deque.size()
-		<< " elements with std::deque\t: " << deque_time << " us" << std::endl;
+		<< " elements with std::deque  : " << deque_time << " us" << std::endl;
 }
 
-std::deque<int> PmergeMe::_sortDeque(std::deque<int> d)
+std::deque<int>	PmergeMe::_sortDeque( std::deque<int> d )
 {
-    std::deque<int> main;
-    std::deque<int> small;
-    std::deque<int> big;
-    int rest;
-    bool has_rest;
-    size_t size = d.size();
+	std::deque<int>				main;
+	std::deque<int>				small;
+	std::deque<int>				big;
+	std::vector<size_t>			order;
+	std::deque<int>::iterator	it;
+	std::deque<int>::iterator	end;
+	int							rest;
+	bool						has_rest;
+	size_t						size;
+	size_t						index;
 
-    if (size <= 1)
-        return (d);
-    has_rest = false;
-    if (size % 2 != 0)
-    {
-        rest = d.back();
-        d.pop_back();
-        has_rest = true;
-        --size;
-    }
-    for (size_t i = 0; i < size; i += 2)
-    {
-        if (d[i] < d[i + 1])
-        {
-            small.push_back(d[i]);
-            big.push_back(d[i + 1]);
-        }
-        else
-        {
-            small.push_back(d[i + 1]);
-            big.push_back(d[i]);
-        }
-    }
-    main = _sortDeque(big);
-
-    std::deque<int>::iterator it;
-    std::deque<int>::iterator end;
-    for (size_t i = 0; i < small.size(); ++i)
-    {
-        end = std::find(main.begin(), main.end(), big[i]);
-        it = main.begin();
-
-        while (it != end && small[i] > *it)
-            ++it;
-
-        main.insert(it, small[i]);
-    }
-    if (has_rest)
-    {
-        it = main.begin();
-        while (it != main.end() && rest > *it)
-            ++it;
-        main.insert(it, rest);
-    }
-    return (main);
+	size = d.size();
+	if (size <= 1)
+		return (d);
+	has_rest = false;
+	if (size % 2 != 0)
+	{
+		rest = d.back();
+		d.pop_back();
+		has_rest = true;
+		--size;
+	}
+	for (size_t i = 0; i < size; i += 2)
+	{
+		if (d[i] < d[i + 1])
+		{
+			small.push_back(d[i]);
+			big.push_back(d[i + 1]);
+		}
+		else
+		{
+			small.push_back(d[i + 1]);
+			big.push_back(d[i]);
+		}
+	}
+	main = _sortDeque(big);
+	order = get_jacobsthal_order(small.size());
+	for (size_t i = 0; i < order.size(); ++i)
+	{
+		index = order[i];
+		end = std::find(main.begin(), main.end(), big[index]);
+		it = std::lower_bound(main.begin(), end, small[index]);
+		main.insert(it, small[index]);
+	}
+	if (has_rest)
+	{
+		it = std::lower_bound(main.begin(), main.end(), rest);
+		main.insert(it, rest);
+	}
+	return (main);
 }
 
-/* ****************************************************************************	*/
-/*							NON MEMBER FUNCTIONS				*/
-/* ****************************************************************************	*/
-std::ostream	&operator<<(std::ostream &out, const PmergeMe &obj)
+/* ************************************************************************** */
+/*                          NON MEMBER FUNCTIONS                               */
+/* ************************************************************************** */
+
+std::ostream	&operator<<( std::ostream &out, const PmergeMe &obj )
 {
 	(void)obj;
 	obj.printVector();
-	return out;
+	return (out);
 }
