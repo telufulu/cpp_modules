@@ -123,10 +123,21 @@ This module reinforces template-based design, exception handling, const correctn
 | **ex01** | *Span* | Implementation of a `Span` class that stores a limited amount of integers and computes the shortest and longest span between them. Reinforces exception handling, sorting, range insertion, and container-based data management. |
 | **ex02** | *Mutated abomination* | Implementation of a `MutantStack` class that behaves like `std::stack` while exposing iterators to its underlying container. Explores container adapters, inheritance from STL classes, and iterator access through the protected member `c`. |
 
+### CPP09 — STL Containers and Algorithms
+
+The goal of this module is to apply STL containers and algorithms to practical problems involving data parsing, expression evaluation, and sorting. Each exercise requires choosing an appropriate container while respecting the restriction that a container used in one exercise cannot be reused in another.
+
+The module covers associative data lookup, stack-based evaluation, recursive sorting, binary insertion, performance measurement, and input validation. All implementations remain compatible with the C++98 standard.
+
+| Exercise | Title | Description |
+|----------|-------|-------------|
+| **ex00** | *Bitcoin Exchange* | Implementation of a program that calculates the value of Bitcoin amounts on specific dates using historical exchange-rate data stored in a `std::map`. Reinforces file parsing, date validation, associative containers, and lookup using `lower_bound`. |
+| **ex01** | *Reverse Polish Notation* | Implementation of an RPN calculator that evaluates postfix mathematical expressions using a `std::stack`. Introduces stack-based expression evaluation, operand ordering, input validation, and error handling. |
+| **ex02** | *PmergeMe* | Implementation of the Ford–Johnson merge-insertion sort using two different containers, `std::vector` and `std::deque`. Explores recursive pair sorting, Jacobsthal-based insertion order, binary search, and performance comparison between containers. |
+
 ## Known Limitations
 
-- All code targets the **C++98** standard; no C++11 or later features are used.
-- The repository currently covers modules **CPP00 through CPP08**. Module CPP09 is not included yet.
+- All code targets the **C++98** standard, no C++11 or later features are used.
 
 ## Resources
 
@@ -145,7 +156,7 @@ This module reinforces template-based design, exception handling, const correctn
 
 AI tools were used for:
 
-- Conceptual clarification of C++ topics (casting, polymorphism, virtual destructors, RTTI).
+- Conceptual clarification of C++ topics (casting, polymorphism, virtual destructors, RTTI, templates, STL containers, and sorting algorithms).
 - Structuring and writing this documentation.
 
 All architecture decisions, implementation logic, and source code were written and reviewed manually.

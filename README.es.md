@@ -123,10 +123,21 @@ Este módulo refuerza el diseño basado en templates, el manejo de excepciones, 
 | **ex01** | *Span* | Implementación de una clase `Span` que almacena una cantidad limitada de enteros y calcula la distancia mínima y máxima entre ellos. Refuerza el manejo de excepciones, la ordenación, la inserción por rangos y la gestión de datos mediante contenedores. |
 | **ex02** | *Mutated abomination* | Implementación de una clase `MutantStack` que se comporta como `std::stack`, pero expone iteradores hacia su contenedor interno. Explora los adaptadores de contenedores, la herencia desde clases de la STL y el acceso a iteradores mediante el miembro protegido `c`. |
 
+### CPP09 — Contenedores y algoritmos de la STL
+
+El objetivo de este módulo es aplicar los contenedores y algoritmos de la STL a problemas prácticos relacionados con el procesamiento de datos, la evaluación de expresiones y la ordenación. Cada ejercicio requiere elegir un contenedor adecuado, respetando la restricción de que un contenedor utilizado en un ejercicio no puede reutilizarse en otro.
+
+El módulo aborda la búsqueda de datos en contenedores asociativos, la evaluación mediante pilas, la ordenación recursiva, la inserción binaria, la medición del rendimiento y la validación de entradas. Todas las implementaciones son compatibles con el estándar C++98.
+
+| Ejercicio | Título | Descripción |
+|-----------|--------|-------------|
+| **ex00** | *Bitcoin Exchange* | Implementación de un programa que calcula el valor de una cantidad de Bitcoin en una fecha concreta utilizando datos históricos almacenados en un `std::map`. Refuerza el procesamiento de archivos, la validación de fechas, los contenedores asociativos y la búsqueda mediante `lower_bound`. |
+| **ex01** | *Reverse Polish Notation* | Implementación de una calculadora de notación polaca inversa que evalúa expresiones posfijas utilizando un `std::stack`. Introduce la evaluación de expresiones mediante pilas, el orden de los operandos, la validación de entradas y la gestión de errores. |
+| **ex02** | *PmergeMe* | Implementación del algoritmo de ordenación Ford–Johnson, también conocido como merge-insertion sort, utilizando `std::vector` y `std::deque`. Explora la ordenación recursiva por parejas, el orden de inserción basado en la sucesión de Jacobsthal, la búsqueda binaria y la comparación de rendimiento entre contenedores. |
+
 ## Limitaciones conocidas
 
-- Todo el código está dirigido al estándar **C++98**; no se usan características de C++11 ni posteriores.
-- El repositorio cubre actualmente los módulos **CPP00 a CPP08**. El módulo CPP09 aún no está incluido.
+- Todo el código está dirigido al estándar **C++98**, no se usan características de C++11 ni posteriores.
 
 ## Recursos
 
@@ -145,7 +156,7 @@ Este módulo refuerza el diseño basado en templates, el manejo de excepciones, 
 
 Se han usado herramientas de IA para:
 
-- Aclaración conceptual de temas de C++ (casting, polimorfismo, destructores virtuales, RTTI).
+- Aclarar conceptos de C++ como las conversiones de tipos, el polimorfismo, los destructores virtuales, RTTI, los templates, los contenedores de la STL y los algoritmos de ordenación.
 - Estructurar y redactar esta documentación.
 
 Todas las decisiones de arquitectura, la lógica de implementación y el código fuente se han escrito y revisado manualmente.
